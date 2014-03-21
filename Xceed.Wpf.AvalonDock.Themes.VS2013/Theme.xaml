@@ -95,7 +95,6 @@
 
     <!--  DocumentPaneControlStyle  -->
     <Style x:Key="AvalonDockThemeVs2013DocumentPaneControlStyle" TargetType="{x:Type avalonDockControls:LayoutDocumentPaneControl}">
-        <Setter Property="Background" Value="{DynamicResource AvalonDock_ThemeMetro_BaseColor33}" />
         <Setter Property="BorderBrush" Value="{x:Null}" />
         <Setter Property="Template">
             <Setter.Value>
@@ -168,6 +167,7 @@
                                 </Setter.Value>
                             </Setter>
                         </Trigger>
+                        
                         <Trigger SourceName="MenuDropDownButton" Property="IsChecked" Value="True">
                             <Setter TargetName="MenuDropDownButton" Property="Content">
                                 <Setter.Value>
@@ -175,6 +175,7 @@
                                 </Setter.Value>
                             </Setter>
                         </Trigger>
+                        
                         <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>
                                 <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=Model.SelectedContent.IsActive}" Value="False" />
@@ -182,23 +183,10 @@
                             <Setter TargetName="BD" Property="BorderBrush" Value="{DynamicResource AvalonDockThemeVs2013DocumentTabInactiveBrush}" />
                         </MultiDataTrigger>
                         
-                        <MultiDataTrigger>
-                            <MultiDataTrigger.Conditions>
-                                <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=Model.SelectedContent.IsActive}" Value="True" />
-                                <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=Model.SelectedContent.IsLastFocusedDocument}" Value="True" />
-                            </MultiDataTrigger.Conditions>
-                            <Setter Property="Background" Value="{DynamicResource AvalonDock_ThemeMetro_BaseColor31}" />
-                        </MultiDataTrigger>
-                        <MultiDataTrigger>
-                            <MultiDataTrigger.Conditions>
-                                <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=Model.SelectedContent.IsActive}" Value="False" />
-                                <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=Model.SelectedContent.IsLastFocusedDocument}" Value="True" />
-                            </MultiDataTrigger.Conditions>
-                            <Setter Property="Background" Value="{DynamicResource AvalonDock_ThemeMetro_BaseColor30}" />
-                        </MultiDataTrigger>
                         <Trigger Property="IsEnabled" Value="false">
                             <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" />
                         </Trigger>
+                        
                         <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Model.ChildrenCount}" Value="0">
                             <Setter TargetName="MenuDropDownButton" Property="Visibility" Value="Collapsed" />
                         </DataTrigger>
@@ -1013,11 +1001,11 @@
 
     <!--  LayoutGridResizerControl  -->
     <Style x:Key="{x:Type avalonDockControls:LayoutGridResizerControl}" TargetType="{x:Type avalonDockControls:LayoutGridResizerControl}">
-        <Setter Property="Background" Value="{DynamicResource AvalonDockThemeVs2013BaseColor7}" />
+        <Setter Property="Background" Value="Transparent" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type avalonDockControls:LayoutGridResizerControl}">
-                    <Border Margin="2" Background="{TemplateBinding Background}" />
+                    <Border Width="6" Background="Transparent" />
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
