@@ -32,6 +32,6 @@
 
     <SolidColorBrush x:Key="AvalonDockThemeVs2013BaseColor6" Color="#8C8E94" />
 
-    <SolidColorBrush x:Key="AvalonDock_ThemeMetro_BaseColor7" Color="#EEEEEE" />
+    <SolidColorBrush x:Key="AvalonDockThemeVs2013BaseColor7" Color="#EEEEEE" />
 
 </ResourceDictionary>
