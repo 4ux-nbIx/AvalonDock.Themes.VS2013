@@ -44,109 +44,118 @@ namespace AvalonDock.WinFormsTestApp
         /// </summary>
         private void InitializeComponent()
         {
-      this.dockingManagerHost = new System.Windows.Forms.Integration.ElementHost();
-      this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-      this.themeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.menuItemAero = new System.Windows.Forms.ToolStripMenuItem();
-      this.menuItemVS2010 = new System.Windows.Forms.ToolStripMenuItem();
-      this.menuItemMetro = new System.Windows.Forms.ToolStripMenuItem();
-      this.menuItemGeneric = new System.Windows.Forms.ToolStripMenuItem();
-      this.menuItemExpressionDark = new System.Windows.Forms.ToolStripMenuItem();
-      this.menuItemExpressionLight = new System.Windows.Forms.ToolStripMenuItem();
-      this.menuStrip1.SuspendLayout();
-      this.SuspendLayout();
-      // 
-      // dockingManagerHost
-      // 
-      this.dockingManagerHost.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.dockingManagerHost.Location = new System.Drawing.Point(0, 24);
-      this.dockingManagerHost.Name = "dockingManagerHost";
-      this.dockingManagerHost.Size = new System.Drawing.Size(673, 423);
-      this.dockingManagerHost.TabIndex = 0;
-      this.dockingManagerHost.Text = "elementHost1";
-      this.dockingManagerHost.Child = null;
-      // 
-      // menuStrip1
-      // 
-      this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.dockingManagerHost = new System.Windows.Forms.Integration.ElementHost();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.themeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemAero = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemVS2010 = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemMetro = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemGeneric = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemExpressionDark = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemExpressionLight = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemVs2013 = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip1.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // dockingManagerHost
+            // 
+            this.dockingManagerHost.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dockingManagerHost.Location = new System.Drawing.Point(0, 24);
+            this.dockingManagerHost.Name = "dockingManagerHost";
+            this.dockingManagerHost.Size = new System.Drawing.Size(673, 423);
+            this.dockingManagerHost.TabIndex = 0;
+            this.dockingManagerHost.Text = "elementHost1";
+            this.dockingManagerHost.Child = null;
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.themeToolStripMenuItem});
-      this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-      this.menuStrip1.Name = "menuStrip1";
-      this.menuStrip1.Size = new System.Drawing.Size(673, 24);
-      this.menuStrip1.TabIndex = 1;
-      this.menuStrip1.Text = "menuStrip1";
-      // 
-      // themeToolStripMenuItem
-      // 
-      this.themeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(673, 24);
+            this.menuStrip1.TabIndex = 1;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // themeToolStripMenuItem
+            // 
+            this.themeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuItemAero,
             this.menuItemVS2010,
             this.menuItemMetro,
             this.menuItemGeneric,
             this.menuItemExpressionDark,
-            this.menuItemExpressionLight});
-      this.themeToolStripMenuItem.Name = "themeToolStripMenuItem";
-      this.themeToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
-      this.themeToolStripMenuItem.Text = "Theme";
-      // 
-      // menuItemAero
-      // 
-      this.menuItemAero.Name = "menuItemAero";
-      this.menuItemAero.Size = new System.Drawing.Size(159, 22);
-      this.menuItemAero.Text = "Aero";
-      this.menuItemAero.Click += new System.EventHandler(this.menuItemAero_Click);
-      // 
-      // menuItemVS2010
-      // 
-      this.menuItemVS2010.Name = "menuItemVS2010";
-      this.menuItemVS2010.Size = new System.Drawing.Size(159, 22);
-      this.menuItemVS2010.Text = "VS2010";
-      this.menuItemVS2010.Click += new System.EventHandler(this.menuItemVS2010_Click);
-      // 
-      // menuItemMetro
-      // 
-      this.menuItemMetro.Name = "menuItemMetro";
-      this.menuItemMetro.Size = new System.Drawing.Size(159, 22);
-      this.menuItemMetro.Text = "Metro";
-      this.menuItemMetro.Click += new System.EventHandler(this.menuItemMetro_Click);
-      // 
-      // menuItemGeneric
-      // 
-      this.menuItemGeneric.Checked = true;
-      this.menuItemGeneric.CheckState = System.Windows.Forms.CheckState.Checked;
-      this.menuItemGeneric.Name = "menuItemGeneric";
-      this.menuItemGeneric.Size = new System.Drawing.Size(159, 22);
-      this.menuItemGeneric.Text = "Generic";
-      this.menuItemGeneric.Click += new System.EventHandler(this.menuItemGeneric_Click);
-      // 
-      // menuItemExpressionDark
-      // 
-      this.menuItemExpressionDark.Name = "menuItemExpressionDark";
-      this.menuItemExpressionDark.Size = new System.Drawing.Size(159, 22);
-      this.menuItemExpressionDark.Text = "Expression Dark";
-      this.menuItemExpressionDark.Click += new System.EventHandler(this.menuItemExpressionDark_Click);
-      // 
-      // menuItemExpressionLight
-      // 
-      this.menuItemExpressionLight.Name = "menuItemExpressionLight";
-      this.menuItemExpressionLight.Size = new System.Drawing.Size(159, 22);
-      this.menuItemExpressionLight.Text = "Expression Light";
-      this.menuItemExpressionLight.Click += new System.EventHandler(this.menuItemExpressionLight_Click);
-      // 
-      // FormMain
-      // 
-      this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-      this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(673, 447);
-      this.Controls.Add(this.dockingManagerHost);
-      this.Controls.Add(this.menuStrip1);
-      this.MainMenuStrip = this.menuStrip1;
-      this.Name = "FormMain";
-      this.Text = "Form1";
-      this.menuStrip1.ResumeLayout(false);
-      this.menuStrip1.PerformLayout();
-      this.ResumeLayout(false);
-      this.PerformLayout();
+            this.menuItemExpressionLight,
+            this.menuItemVs2013});
+            this.themeToolStripMenuItem.Name = "themeToolStripMenuItem";
+            this.themeToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
+            this.themeToolStripMenuItem.Text = "Theme";
+            // 
+            // menuItemAero
+            // 
+            this.menuItemAero.Name = "menuItemAero";
+            this.menuItemAero.Size = new System.Drawing.Size(159, 22);
+            this.menuItemAero.Text = "Aero";
+            this.menuItemAero.Click += new System.EventHandler(this.menuItemAero_Click);
+            // 
+            // menuItemVS2010
+            // 
+            this.menuItemVS2010.Name = "menuItemVS2010";
+            this.menuItemVS2010.Size = new System.Drawing.Size(159, 22);
+            this.menuItemVS2010.Text = "VS2010";
+            this.menuItemVS2010.Click += new System.EventHandler(this.menuItemVS2010_Click);
+            // 
+            // menuItemMetro
+            // 
+            this.menuItemMetro.Name = "menuItemMetro";
+            this.menuItemMetro.Size = new System.Drawing.Size(159, 22);
+            this.menuItemMetro.Text = "Metro";
+            this.menuItemMetro.Click += new System.EventHandler(this.menuItemMetro_Click);
+            // 
+            // menuItemGeneric
+            // 
+            this.menuItemGeneric.Name = "menuItemGeneric";
+            this.menuItemGeneric.Size = new System.Drawing.Size(159, 22);
+            this.menuItemGeneric.Text = "Generic";
+            this.menuItemGeneric.Click += new System.EventHandler(this.menuItemGeneric_Click);
+            // 
+            // menuItemExpressionDark
+            // 
+            this.menuItemExpressionDark.Name = "menuItemExpressionDark";
+            this.menuItemExpressionDark.Size = new System.Drawing.Size(159, 22);
+            this.menuItemExpressionDark.Text = "Expression Dark";
+            this.menuItemExpressionDark.Click += new System.EventHandler(this.menuItemExpressionDark_Click);
+            // 
+            // menuItemExpressionLight
+            // 
+            this.menuItemExpressionLight.Name = "menuItemExpressionLight";
+            this.menuItemExpressionLight.Size = new System.Drawing.Size(159, 22);
+            this.menuItemExpressionLight.Text = "Expression Light";
+            this.menuItemExpressionLight.Click += new System.EventHandler(this.menuItemExpressionLight_Click);
+            // 
+            // menuItemVs2013
+            // 
+            this.menuItemVs2013.Checked = true;
+            this.menuItemVs2013.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.menuItemVs2013.Name = "menuItemVs2013";
+            this.menuItemVs2013.Size = new System.Drawing.Size(159, 22);
+            this.menuItemVs2013.Text = "VS2013";
+            this.menuItemVs2013.Click += new System.EventHandler(this.vS2013ToolStripMenuItem_Click);
+            // 
+            // FormMain
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(673, 447);
+            this.Controls.Add(this.dockingManagerHost);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
+            this.Name = "FormMain";
+            this.Text = "Form1";
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
+            this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -161,6 +170,7 @@ namespace AvalonDock.WinFormsTestApp
         private System.Windows.Forms.ToolStripMenuItem menuItemExpressionDark;
         private System.Windows.Forms.ToolStripMenuItem menuItemMetro;
         private System.Windows.Forms.ToolStripMenuItem menuItemExpressionLight;
+        private System.Windows.Forms.ToolStripMenuItem menuItemVs2013;
     }
 }
 

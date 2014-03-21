@@ -25,6 +25,7 @@ using System.Windows.Forms;
 using Xceed.Wpf.AvalonDock.Layout;
 using Xceed.Wpf.AvalonDock.Layout.Serialization;
 using Xceed.Wpf.AvalonDock;
+using Xceed.Wpf.AvalonDock.Themes;
 
 namespace AvalonDock.WinFormsTestApp
 {
@@ -41,6 +42,7 @@ namespace AvalonDock.WinFormsTestApp
         DockingManager _dockingManager = new DockingManager();
         protected override void OnLoad(EventArgs e)
         {
+            _dockingManager.Theme = new Vs2013Theme();
             XmlLayoutSerializer serializer = new XmlLayoutSerializer(_dockingManager);
 
             serializer.LayoutSerializationCallback += (s, args) =>
@@ -107,6 +109,12 @@ namespace AvalonDock.WinFormsTestApp
           this.SetChecked( menuItemExpressionLight );
         }
 
+        private void vS2013ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _dockingManager.Theme = new Xceed.Wpf.AvalonDock.Themes.Vs2013Theme();
+            this.SetChecked(menuItemVs2013);
+        }
+
         private void SetChecked( ToolStripMenuItem toCheck )
         {
           menuItemAero.Checked = false;
@@ -117,7 +125,5 @@ namespace AvalonDock.WinFormsTestApp
 
           toCheck.Checked = true;
         }
-
-
     }
 }

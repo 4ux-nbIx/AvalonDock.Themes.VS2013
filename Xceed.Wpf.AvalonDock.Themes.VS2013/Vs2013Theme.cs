@@ -21,7 +21,7 @@ using System.Text;
 
 namespace Xceed.Wpf.AvalonDock.Themes
 {
-    public class MetroTheme : Theme
+    public class Vs2013Theme : Theme
     {
         public override Uri GetResourceUri()
         {
