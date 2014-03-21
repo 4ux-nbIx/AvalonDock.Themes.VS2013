@@ -204,21 +204,18 @@
                     <Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay}" />
                     <Setter Property="Background" Value="Transparent" />
                     <Setter Property="BorderBrush" Value="Transparent" />
-                    <Setter Property="Foreground" Value="{DynamicResource AvalonDockThemeVs2013BaseColor5}" />
                     <Setter Property="ToolTip" Value="{Binding ToolTip}" />
-                    <Setter Property="Padding" Value="4" />
-                    <Setter Property="Margin" Value="2,0,2,0" />
+                    <Setter Property="Padding" Value="6,1" />
+                    <Setter Property="Margin" Value="0" />
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="{x:Type TabItem}">
-                                <Grid Margin="0,4,4,4" SnapsToDevicePixels="true">
+                                <Grid SnapsToDevicePixels="true">
                                     <Border x:Name="Bd"
                                             Background="{TemplateBinding Background}"
-                                            BorderBrush="{TemplateBinding BorderBrush}"
-                                            BorderThickness="0,3,0,0"
-                                            Padding="{TemplateBinding Padding}" />
+                                            BorderBrush="{DynamicResource AvalonDockThemeVs2013DocumentTabBrush}"
+                                            BorderThickness="0,0,0,2" />
                                     <ContentPresenter x:Name="Content"
-                                                      Margin="2"
                                                       HorizontalAlignment="{Binding HorizontalContentAlignment,
                                                                                     RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"
                                                       VerticalAlignment="{Binding VerticalContentAlignment,
@@ -229,25 +226,46 @@
                                 </Grid>
                                 <ControlTemplate.Triggers>
                                     <Trigger Property="Selector.IsSelected" Value="true">
-                                        <Setter Property="BorderBrush" Value="{DynamicResource AvalonDockThemeVs2013BaseColor5}" />
+                                        <Setter TargetName="Bd" Property="Background" Value="{DynamicResource AvalonDockThemeVs2013DocumentTabBrush}" />
+                                        <Setter Property="Foreground" Value="{DynamicResource AvalonDockThemeVs2013DocumentTabActiveForeground}" />
                                         <Setter Property="Panel.ZIndex" Value="1" />
                                     </Trigger>
 
                                     <DataTrigger Binding="{Binding IsActive}" Value="True">
-                                        <Setter Property="BorderBrush" Value="{DynamicResource AvalonDockThemeVs2013BaseColor3}" />
-                                        <Setter Property="Foreground" Value="{DynamicResource AvalonDockThemeVs2013BaseColor5}" />
+                                        <Setter Property="Foreground" Value="{DynamicResource AvalonDockThemeVs2013DocumentTabActiveForeground}" />
                                         <Setter Property="Panel.ZIndex" Value="1" />
                                     </DataTrigger>
+
+                                    <MultiDataTrigger>
+                                        <MultiDataTrigger.Conditions>
+                                            <Condition Binding="{Binding IsActive}" Value="False" />
+                                            <Condition Binding="{Binding IsSelected}" Value="True" />
+                                        </MultiDataTrigger.Conditions>
+                                        
+                                        <Setter TargetName="Bd" Property="Background" Value="{DynamicResource AvalonDockThemeVs2013DocumentTabInactiveBrush}" />
+                                        <Setter TargetName="Bd" Property="BorderBrush" Value="{DynamicResource AvalonDockThemeVs2013DocumentTabInactiveBrush}" />
+                                        <Setter Property="Foreground" Value="{DynamicResource AvalonDockThemeVs2013DocumentTabInactiveForeground}" />
+                                    </MultiDataTrigger>
+
+                                    <MultiDataTrigger>
+                                        <MultiDataTrigger.Conditions>
+                                            <Condition Binding="{Binding IsActive}" Value="False" />
+                                            <Condition Binding="{Binding IsSelected}" Value="False" />
+                                        </MultiDataTrigger.Conditions>
+
+                                        <Setter TargetName="Bd" Property="BorderBrush" Value="Transparent" />
+                                    </MultiDataTrigger>
 
                                     <MultiTrigger>
                                         <MultiTrigger.Conditions>
                                             <Condition Property="IsMouseOver" Value="true" />
                                             <Condition Property="Selector.IsSelected" Value="false" />
                                         </MultiTrigger.Conditions>
-                                        <Setter Property="BorderBrush" Value="{DynamicResource AvalonDockThemeVs2013BaseColor4}" />
-                                        <Setter Property="Foreground" Value="{DynamicResource AvalonDockThemeVs2013BaseColor5}" />
+                                        <Setter TargetName="Bd" Property="Background" Value="{DynamicResource AvalonDockThemeVs2013DocumentTabMouseOverBrush}" />
+                                        <Setter Property="Foreground" Value="{DynamicResource AvalonDockThemeVs2013DocumentTabActiveForeground}" />
                                         <Setter Property="Panel.ZIndex" Value="0" />
                                     </MultiTrigger>
+                                    
                                     <Trigger Property="IsEnabled" Value="false">
                                         <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" />
                                     </Trigger>
@@ -987,7 +1005,7 @@
 
     <!--  LayoutGridResizerControl  -->
     <Style x:Key="{x:Type avalonDockControls:LayoutGridResizerControl}" TargetType="{x:Type avalonDockControls:LayoutGridResizerControl}">
-        <Setter Property="Background" Value="{DynamicResource AvalonDock_ThemeMetro_BaseColor7}" />
+        <Setter Property="Background" Value="{DynamicResource AvalonDockThemeVs2013BaseColor7}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type avalonDockControls:LayoutGridResizerControl}">
@@ -1635,7 +1653,7 @@
 
                                 <Border Grid.Row="1"
                                         MinHeight="200"
-                                        Background="{DynamicResource AvalonDock_ThemeMetro_BaseColor7}"
+                                        Background="{DynamicResource AvalonDockThemeVs2013BaseColor7}"
                                         BorderBrush="{DynamicResource AvalonDock_ThemeMetro_BaseColor11}"
                                         BorderThickness="0,1,0,0">
                                     <Grid Margin="5">
