@@ -41,4 +41,6 @@
     <SolidColorBrush x:Key="AvalonDockThemeVs2013DocumentTabActiveForeground" Color="White" />
     <SolidColorBrush x:Key="AvalonDockThemeVs2013DocumentTabInactiveForeground" Color="#FF717171" />
 
+    <SolidColorBrush x:Key="AvalonDockThemeVs2013PanelBorderBrush" Color="#FFCCCEDB" />
+
 </ResourceDictionary>
