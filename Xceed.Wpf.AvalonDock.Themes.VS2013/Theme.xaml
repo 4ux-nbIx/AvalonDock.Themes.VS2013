@@ -113,7 +113,10 @@
                                 <ColumnDefinition />
                                 <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
-                            <Border x:Name="BD" Grid.ColumnSpan="2" BorderBrush="{DynamicResource AvalonDockThemeVs2013DocumentTabBrush}" BorderThickness="0,0,0,2" />
+                            <Border x:Name="BD"
+                                    Grid.ColumnSpan="2"
+                                    BorderBrush="{DynamicResource AvalonDockThemeVs2013DocumentTabBrush}"
+                                    BorderThickness="0,0,0,2" />
                             <avalonDockControls:DocumentPaneTabPanel x:Name="HeaderPanel"
                                                                      Grid.Row="0"
                                                                      Grid.Column="0"
@@ -167,7 +170,7 @@
                                 </Setter.Value>
                             </Setter>
                         </Trigger>
-                        
+
                         <Trigger SourceName="MenuDropDownButton" Property="IsChecked" Value="True">
                             <Setter TargetName="MenuDropDownButton" Property="Content">
                                 <Setter.Value>
@@ -175,18 +178,18 @@
                                 </Setter.Value>
                             </Setter>
                         </Trigger>
-                        
+
                         <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>
                                 <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=Model.SelectedContent.IsActive}" Value="False" />
                             </MultiDataTrigger.Conditions>
                             <Setter TargetName="BD" Property="BorderBrush" Value="{DynamicResource AvalonDockThemeVs2013DocumentTabInactiveBrush}" />
                         </MultiDataTrigger>
-                        
+
                         <Trigger Property="IsEnabled" Value="false">
                             <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" />
                         </Trigger>
-                        
+
                         <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Model.ChildrenCount}" Value="0">
                             <Setter TargetName="MenuDropDownButton" Property="Visibility" Value="Collapsed" />
                         </DataTrigger>
@@ -237,7 +240,7 @@
                                             <Condition Binding="{Binding IsActive}" Value="False" />
                                             <Condition Binding="{Binding IsSelected}" Value="True" />
                                         </MultiDataTrigger.Conditions>
-                                        
+
                                         <Setter TargetName="Bd" Property="Background" Value="{DynamicResource AvalonDockThemeVs2013DocumentTabInactiveBrush}" />
                                         <Setter TargetName="Bd" Property="BorderBrush" Value="{DynamicResource AvalonDockThemeVs2013DocumentTabInactiveBrush}" />
                                         <Setter Property="Foreground" Value="{DynamicResource AvalonDockThemeVs2013DocumentTabInactiveForeground}" />
@@ -261,7 +264,7 @@
                                         <Setter Property="Foreground" Value="{DynamicResource AvalonDockThemeVs2013DocumentTabActiveForeground}" />
                                         <Setter Property="Panel.ZIndex" Value="0" />
                                     </MultiTrigger>
-                                    
+
                                     <Trigger Property="IsEnabled" Value="false">
                                         <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" />
                                     </Trigger>
@@ -311,9 +314,10 @@
                         <Border x:Name="ContentPanel"
                                 Grid.Row="0"
                                 Grid.Column="0"
+                                Margin="0"
                                 Background="{TemplateBinding Background}"
-                                BorderBrush="{TemplateBinding BorderBrush}"
-                                BorderThickness="{TemplateBinding BorderThickness}"
+                                BorderBrush="{DynamicResource AvalonDockThemeVs2013PanelBorderBrush}"
+                                BorderThickness="1"
                                 KeyboardNavigation.DirectionalNavigation="Contained"
                                 KeyboardNavigation.TabIndex="2"
                                 KeyboardNavigation.TabNavigation="Cycle">
@@ -324,7 +328,7 @@
                         </Border>
                         <avalonDockControls:AnchorablePaneTabPanel x:Name="HeaderPanel"
                                                                    Grid.Row="1"
-                                                                   Margin="0,0,2,2"
+                                                                   Margin="0"
                                                                    Panel.ZIndex="1"
                                                                    IsItemsHost="true"
                                                                    KeyboardNavigation.TabIndex="1" />
@@ -333,9 +337,6 @@
                         <Trigger Property="IsEnabled" Value="false">
                             <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" />
                         </Trigger>
-                        <DataTrigger Binding="{Binding Items.Count, RelativeSource={RelativeSource Self}}" Value="1">
-                            <Setter TargetName="HeaderPanel" Property="Margin" Value="0" />
-                        </DataTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
@@ -353,13 +354,19 @@
                         <Setter.Value>
                             <ControlTemplate TargetType="{x:Type TabItem}">
                                 <Grid SnapsToDevicePixels="true">
+                                    <Border x:Name="SelectedBD"
+                                            Margin="0,-1,0,0"
+                                            BorderBrush="{DynamicResource AvalonDockThemeVs2013TabBackground}"
+                                            BorderThickness="0,1,0,0"
+                                            Visibility="Collapsed" />
+
                                     <Border x:Name="Bd"
-                                            Margin="4"
+                                            Margin="0"
                                             Background="{TemplateBinding Background}"
-                                            BorderBrush="{TemplateBinding BorderBrush}"
-                                            BorderThickness="0,2,0,0"
-                                            Padding="{TemplateBinding Padding}">
+                                            BorderBrush="{DynamicResource AvalonDockThemeVs2013PanelBorderBrush}"
+                                            BorderThickness="0">
                                         <ContentPresenter x:Name="Content"
+                                                          Margin="6,1"
                                                           HorizontalAlignment="{Binding HorizontalContentAlignment,
                                                                                         RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"
                                                           VerticalAlignment="{Binding VerticalContentAlignment,
@@ -371,15 +378,26 @@
                                 </Grid>
                                 <ControlTemplate.Triggers>
                                     <Trigger Property="Selector.IsSelected" Value="true">
-                                        <Setter Property="BorderBrush" Value="{DynamicResource AvalonDockThemeVs2013BaseColor5}" />
+                                        <Setter TargetName="SelectedBD" Property="Visibility" Value="Visible" />
+                                        <Setter TargetName="Bd" Property="BorderThickness" Value="1,0,1,1" />
+                                        <Setter Property="Foreground" Value="{DynamicResource AvalonDockThemeVs2013DocumentTabBrush}" />
                                         <Setter Property="Panel.ZIndex" Value="1" />
                                     </Trigger>
 
-                                    <DataTrigger Binding="{Binding IsActive}" Value="True">
+                                    <!--
+                                        <Trigger Property="Selector.IsSelected" Value="false">
+                                        <Setter TargetName="Bd" Property="BorderThickness" Value="0,1,0,0" />
+                                        </Trigger>
+                                    -->
+
+                                    <!--
+                                        <DataTrigger Binding="{Binding IsActive}" Value="True">
                                         <Setter Property="BorderBrush" Value="{DynamicResource AvalonDockThemeVs2013BaseColor3}" />
                                         <Setter Property="Foreground" Value="{DynamicResource AvalonDockThemeVs2013BaseColor5}" />
                                         <Setter Property="Panel.ZIndex" Value="1" />
-                                    </DataTrigger>
+                                        </DataTrigger>
+                                    -->
+
                                     <MultiTrigger>
                                         <MultiTrigger.Conditions>
                                             <Condition Property="IsMouseOver" Value="true" />
@@ -388,9 +406,8 @@
                                         <Setter Property="BorderBrush" Value="{DynamicResource AvalonDockThemeVs2013BaseColor4}" />
                                         <Setter Property="Panel.ZIndex" Value="0" />
                                     </MultiTrigger>
+
                                     <Trigger Property="IsEnabled" Value="false">
-                                        <Setter Property="BorderBrush" Value="{DynamicResource AvalonDock_ThemeMetro_BaseColor13}" />
-                                        <Setter Property="Background" Value="{DynamicResource AvalonDock_ThemeMetro_BaseColor9}" />
                                         <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" />
                                     </Trigger>
                                 </ControlTemplate.Triggers>
@@ -1030,10 +1047,10 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type avalonDockControls:LayoutDocumentTabItem}">
                     <avalonDockControls:DropDownControlArea DropDownContextMenu="{Binding Root.Manager.DocumentContextMenu}" DropDownContextMenuDataContext="{Binding LayoutItem, RelativeSource={RelativeSource TemplatedParent}}">
-                        <Border Background="{TemplateBinding Background}"
+                        <Border Margin="0,3,0,3"
+                                Background="{TemplateBinding Background}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
-                                BorderThickness="{TemplateBinding BorderThickness}"
-                                Margin="0,3,0,3">
+                                BorderThickness="{TemplateBinding BorderThickness}">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*" />
@@ -1041,7 +1058,7 @@
                                 </Grid.ColumnDefinitions>
                                 <Border Grid.ColumnSpan="2" Background="Transparent" />
                                 <ContentPresenter Margin="4,0"
-                                    Content="{Binding Model,
+                                                  Content="{Binding Model,
                                                                     RelativeSource={RelativeSource TemplatedParent}}"
                                                   ContentTemplate="{Binding DocumentHeaderTemplate,
                                                                             Mode=OneWay,
