@@ -446,10 +446,10 @@
                 <ControlTemplate>
                     <Border Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}"
-                            Padding="0,3,0,0">
-                        <Grid>
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                        <Grid Margin="2,3">
                             <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="Auto" />
@@ -464,12 +464,38 @@
                                                                             RelativeSource={RelativeSource TemplatedParent}}"
                                                   ContentTemplateSelector="{Binding Model.Root.Manager.AnchorableTitleTemplateSelector,
                                                                                     RelativeSource={RelativeSource TemplatedParent}}"
-                                                  TextElement.Foreground="{DynamicResource AvalonDockThemeVs2013BaseColor2}" />
+                                                  TextElement.Foreground="{TemplateBinding Foreground}" />
                             </avalonDockControls:DropDownControlArea>
 
+                            <Rectangle x:Name="DragHandleTexture"
+                                       Grid.Column="1"
+                                       Height="5"
+                                       Margin="8,0,4,0">
+                                <Rectangle.Fill>
+                                    <DrawingBrush TileMode="Tile"
+                                                  Viewbox="0,0,4,5"
+                                                  ViewboxUnits="Absolute"
+                                                  Viewport="0,0,4,5"
+                                                  ViewportUnits="Absolute">
+                                        <DrawingBrush.Drawing>
+                                            <GeometryDrawing Brush="#FF999999">
+                                                <GeometryDrawing.Geometry>
+                                                    <GeometryGroup>
+                                                        <GeometryGroup.Children>
+                                                            <RectangleGeometry Rect="0,0,1,1" />
+                                                            <RectangleGeometry Rect="0,4,1,1" />
+                                                            <RectangleGeometry Rect="2,2,1,1" />
+                                                        </GeometryGroup.Children>
+                                                    </GeometryGroup>
+                                                </GeometryDrawing.Geometry>
+                                            </GeometryDrawing>
+                                        </DrawingBrush.Drawing>
+                                    </DrawingBrush>
+                                </Rectangle.Fill>
+                            </Rectangle>
 
                             <avalonDockControls:DropDownButton x:Name="MenuDropDownButton"
-                                                               Grid.Column="1"
+                                                               Grid.Column="2"
                                                                VerticalAlignment="Center"
                                                                DropDownContextMenu="{Binding Model.Root.Manager.AnchorableContextMenu,
                                                                                              RelativeSource={RelativeSource TemplatedParent}}"
@@ -482,7 +508,7 @@
                             </avalonDockControls:DropDownButton>
 
                             <Button x:Name="PART_AutoHidePin"
-                                    Grid.Column="2"
+                                    Grid.Column="3"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
                                     Command="{Binding Path=LayoutItem.AutoHideCommand,
@@ -497,7 +523,7 @@
                                 <Image x:Name="PART_ImgAutoHidePin" Source="Images/PinAutoHide.png" />
                             </Button>
                             <Button x:Name="PART_HidePin"
-                                    Grid.Column="3"
+                                    Grid.Column="4"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
                                     Command="{Binding Path=LayoutItem.HideCommand,
@@ -522,24 +548,30 @@
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
+
                         <DataTrigger Binding="{Binding Model.IsActive, RelativeSource={RelativeSource Mode=Self}}" Value="True">
-                            <Setter Property="BorderBrush" Value="{DynamicResource AvalonDockThemeVs2013BaseColor3}" />
-                            <Setter Property="BorderThickness" Value="0,3,0,0" />
+                            <Setter Property="Background" Value="{DynamicResource AvalonDockThemeVs2013DocumentTabBrush}" />
+                            <Setter Property="Foreground" Value="{DynamicResource AvalonDockThemeVs2013DocumentTabActiveForeground}" />
                         </DataTrigger>
+
                         <DataTrigger Binding="{Binding Model.IsActive, RelativeSource={RelativeSource Mode=Self}}" Value="True">
                             <Setter TargetName="PART_ImgAutoHidePin" Property="Source" Value="Images/PinAutoHide_Dark.png" />
                             <Setter TargetName="PART_ImgHidePin" Property="Source" Value="Images/PinClose_Dark.png" />
                             <Setter TargetName="PART_ImgMenuPin" Property="Source" Value="Images/PinMenu_Dark.png" />
                         </DataTrigger>
+
                         <Trigger SourceName="MenuDropDownButton" Property="IsMouseOver" Value="True">
                             <Setter TargetName="PART_ImgMenuPin" Property="Source" Value="Images/PinMenu_Black.png" />
                         </Trigger>
+
                         <Trigger SourceName="MenuDropDownButton" Property="IsChecked" Value="True">
                             <Setter TargetName="PART_ImgMenuPin" Property="Source" Value="Images/PinMenu_Black.png" />
                         </Trigger>
+
                         <Trigger SourceName="PART_AutoHidePin" Property="IsMouseOver" Value="True">
                             <Setter TargetName="PART_ImgAutoHidePin" Property="Source" Value="Images/PinAutoHide_Black.png" />
                         </Trigger>
+
                         <Trigger SourceName="PART_HidePin" Property="IsMouseOver" Value="True">
                             <Setter TargetName="PART_ImgHidePin" Property="Source" Value="Images/PinClose_Black.png" />
                         </Trigger>
@@ -1158,7 +1190,7 @@
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="*" />
                             </Grid.RowDefinitions>
-                            <Border x:Name="Header" Background="{DynamicResource AvalonDock_ThemeMetro_BaseColor16}">
+                            <Border x:Name="Header">
                                 <avalonDockControls:AnchorablePaneTitle Model="{Binding Model, RelativeSource={RelativeSource TemplatedParent}}" />
                             </Border>
                             <ContentPresenter Grid.Row="1"
