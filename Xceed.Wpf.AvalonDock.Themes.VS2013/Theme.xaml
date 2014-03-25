@@ -611,10 +611,11 @@
 
     <ControlTemplate x:Key="AvalonDockThemeVs2013AnchorTemplate" TargetType="{x:Type avalonDockControls:LayoutAnchorControl}">
         <Border x:Name="Bd"
-                Margin="4"
-                BorderBrush="{TemplateBinding BorderBrush}"
-                BorderThickness="0,2,0,0"
-                Padding="2">
+                Margin="0,0,12,0"
+                BorderBrush="{DynamicResource AvalonDockThemeVs2013DocumentTabInactiveBrush}"
+                BorderThickness="0,0,0,6"
+                Background="Transparent"
+                Padding="0,0,0,3">
             <ContentPresenter Content="{Binding Model,
                                                 RelativeSource={RelativeSource TemplatedParent}}"
                               ContentTemplate="{Binding AnchorableHeaderTemplate,
@@ -629,24 +630,19 @@
         </Border>
         <ControlTemplate.Triggers>
             <Trigger Property="Side" Value="Right">
-                <Setter TargetName="Bd" Property="BorderThickness" Value="0,0,0,2" />
+                <Setter TargetName="Bd" Property="BorderThickness" Value="0,6,0,0" />
+                <Setter TargetName="Bd" Property="Padding" Value="0,3,0,0" />
             </Trigger>
-            <Trigger Property="Side" Value="Bottom">
-                <Setter TargetName="Bd" Property="BorderThickness" Value="0,2,0,0" />
-            </Trigger>
+            
             <Trigger Property="Side" Value="Top">
-                <Setter TargetName="Bd" Property="BorderThickness" Value="0,0,0,2" />
+                <Setter TargetName="Bd" Property="BorderThickness" Value="0,6,0,0" />
+                <Setter TargetName="Bd" Property="Padding" Value="0,3,0,0" />
             </Trigger>
-            <MultiTrigger>
-                <MultiTrigger.Conditions>
-                    <Condition Property="IsMouseOver" Value="true" />
-                    <Condition Property="Selector.IsSelected" Value="false" />
-                </MultiTrigger.Conditions>
-                <Setter Property="BorderBrush" Value="{DynamicResource AvalonDockThemeVs2013BaseColor4}" />
-            </MultiTrigger>
-            <DataTrigger Binding="{Binding Model.IsActive, RelativeSource={RelativeSource Mode=Self}}" Value="true">
-                <Setter Property="BorderBrush" Value="{DynamicResource AvalonDockThemeVs2013BaseColor3}" />
-            </DataTrigger>
+            
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="Bd" Property="BorderBrush" Value="{DynamicResource AvalonDockThemeVs2013DocumentTabBrush}" />
+            </Trigger>
+            
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
