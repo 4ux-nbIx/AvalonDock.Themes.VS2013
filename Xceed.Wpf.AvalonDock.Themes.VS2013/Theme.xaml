@@ -997,8 +997,8 @@
         <Setter Property="DocumentContextMenu" Value="{StaticResource AvalonDockThemeVs2013DocumentContextMenu}" />
         <Setter Property="DocumentPaneMenuItemHeaderTemplate" Value="{StaticResource AvalonDockThemeVs2013DocumentHeaderTemplate}" />
         <Setter Property="IconContentTemplate" Value="{StaticResource AvalonDockThemeVs2013IconContentTemplate}" />
-        <Setter Property="GridSplitterWidth" Value="5" />
-        <Setter Property="GridSplitterHeight" Value="5" />
+        <Setter Property="GridSplitterWidth" Value="6" />
+        <Setter Property="GridSplitterHeight" Value="6" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type avalonDock:DockingManager}">
@@ -1050,7 +1050,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type avalonDockControls:LayoutGridResizerControl}">
-                    <Border MinWidth="6" MinHeight="6" Background="Transparent" />
+                    <Border Background="Transparent" />
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -1544,7 +1544,7 @@
     </Style>
 
     <Style x:Key="{x:Type avalonDockControls:LayoutAutoHideWindowControl}" TargetType="{x:Type avalonDockControls:LayoutAutoHideWindowControl}">
-        <Setter Property="Background" Value="{DynamicResource AvalonDockThemeVs2013BaseColor1}" />
+        <Setter Property="Background" Value="{DynamicResource AvalonDockThemeVs2013TabBackground}" />
     </Style>
 
 
