@@ -1054,7 +1054,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type avalonDockControls:LayoutGridResizerControl}">
-                    <Border Width="6" Background="Transparent" />
+                    <Border MinWidth="6" MinHeight="6" Background="Transparent" />
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
