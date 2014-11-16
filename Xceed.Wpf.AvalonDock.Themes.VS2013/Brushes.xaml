@@ -43,19 +43,29 @@
 
     <SolidColorBrush x:Key="AvalonDockThemeVs2013PanelBorderBrush" Color="#FFCCCEDB" />
     <SolidColorBrush x:Key="AvalonDockThemeVs2013TabBackground" Color="#FFF5F5F5" />
-
-    <SolidColorBrush x:Key="AvalonDockThemeVs2013AnchorablePaneDragHandleBrush" Color="#999999" />
-    <SolidColorBrush x:Key="AvalonDockThemeVs2013AnchorablePaneDragHandleActiveBrush" Color="#59A8DE" />
-    <BitmapImage x:Key="AvalonDockThemeVs2013AnchorablePaneMenuPin" UriSource="Images/PinMenu_Black.png" />
-    <BitmapImage x:Key="AvalonDockThemeVs2013AnchorablePaneAutoHidePin" UriSource="Images/PinAutoHide_Black.png" />
-    <BitmapImage x:Key="AvalonDockThemeVs2013AnchorablePaneHidePin" UriSource="Images/PinClose_Black.png" />
-    <BitmapImage x:Key="AvalonDockThemeVs2013AnchorablePaneActiveMenuPin" UriSource="Images/PinMenu_White.png" />
-    <BitmapImage x:Key="AvalonDockThemeVs2013AnchorablePaneActiveAutoHidePin" UriSource="Images/PinAutoHide_White.png" />
-    <BitmapImage x:Key="AvalonDockThemeVs2013AnchorablePaneAutoHidePinSelected" UriSource="Images/PinAutoHide_White.png" />
-    <BitmapImage x:Key="AvalonDockThemeVs2013AnchorablePaneActiveHidePin" UriSource="Images/PinClose_White.png" />
-    <BitmapImage x:Key="AvalonDockThemeVs2013AnchorablePaneActiveHidePinSelected" UriSource="Images/PinClose_White.png" />
-    <SolidColorBrush x:Key="AvalonDockThemeVs2013AnchorablePaneWidgetMouseOverBackground" Color="#FEFEFE" />
-    <SolidColorBrush x:Key="AvalonDockThemeVs2013AnchorablePaneActiveWidgetMouseOverBackground" Color="#52B0EF" />
-    <SolidColorBrush x:Key="AvalonDockThemeVs2013AnchorablePaneActiveWidgetSelectedBackground" Color="#0E6198" />
+    
+    <!-- Tool Window : Caption -->
+    <SolidColorBrush x:Key="AvalonDockThemeVs2013ToolWindowCaptionActiveBackground" Color="#007ACC" />
+    <SolidColorBrush x:Key="AvalonDockThemeVs2013ToolWindowCaptionActiveGrip" Color="#59A8DE" />
+    <SolidColorBrush x:Key="AvalonDockThemeVs2013ToolWindowCaptionActiveText" Color="#FFFFFF" />
+    <SolidColorBrush x:Key="AvalonDockThemeVs2013ToolWindowCaptionInactiveBackground" Color="#EEEEF2" />
+    <SolidColorBrush x:Key="AvalonDockThemeVs2013ToolWindowCaptionInactiveGrip" Color="#999999" />
+    <SolidColorBrush x:Key="AvalonDockThemeVs2013ToolWindowCaptionInactiveText" Color="#444444" />
+    
+    <!-- Tool Window : Caption : Button -->
+    <SolidColorBrush x:Key="AvalonDockThemeVs2013ToolWindowCaptionButtonActiveGlyph" Color="#FFFFFF" />
+    <SolidColorBrush x:Key="AvalonDockThemeVs2013ToolWindowCaptionButtonActiveHoveredBackground" Color="#52B0EF" />
+    <SolidColorBrush x:Key="AvalonDockThemeVs2013ToolWindowCaptionButtonActiveHoveredBorder" Color="#52B0EF" />
+    <SolidColorBrush x:Key="AvalonDockThemeVs2013ToolWindowCaptionButtonActiveHoveredGlyph" Color="#FFFFFF" />
+    <SolidColorBrush x:Key="AvalonDockThemeVs2013ToolWindowCaptionButtonActivePressedBackground" Color="#0E6198" />
+    <SolidColorBrush x:Key="AvalonDockThemeVs2013ToolWindowCaptionButtonActivePressedBorder" Color="#0E6198" />
+    <SolidColorBrush x:Key="AvalonDockThemeVs2013ToolWindowCaptionButtonActivePressedGlyph" Color="#FFFFFF" />
+    <SolidColorBrush x:Key="AvalonDockThemeVs2013ToolWindowCaptionButtonInactiveGlyph" Color="#1E1E1E" />
+    <SolidColorBrush x:Key="AvalonDockThemeVs2013ToolWindowCaptionButtonInactiveHoveredBackground" Color="#F7F7F9" />
+    <SolidColorBrush x:Key="AvalonDockThemeVs2013ToolWindowCaptionButtonInactiveHoveredBorder" Color="#F7F7F9" />
+    <SolidColorBrush x:Key="AvalonDockThemeVs2013ToolWindowCaptionButtonInactiveHoveredGlyph" Color="#717171" />
+    <SolidColorBrush x:Key="AvalonDockThemeVs2013ToolWindowCaptionButtonInactivePressedBackground" Color="#0E6198" />
+    <SolidColorBrush x:Key="AvalonDockThemeVs2013ToolWindowCaptionButtonInactivePressedBorder" Color="#0E6198" />
+    <SolidColorBrush x:Key="AvalonDockThemeVs2013ToolWindowCaptionButtonInactivePressedGlyph" Color="#FFFFFF" />
 
 </ResourceDictionary>

@@ -442,7 +442,8 @@
     </Style>
 
     <Style TargetType="avalonDockControls:AnchorablePaneTitle">
-        <Setter Property="Background" Value="{DynamicResource AvalonDockThemeVs2013BaseColor1}" />
+        <Setter Property="Background" Value="{DynamicResource AvalonDockThemeVs2013ToolWindowCaptionInactiveBackground}" />
+        <Setter Property="Foreground" Value="{DynamicResource AvalonDockThemeVs2013ToolWindowCaptionInactiveText}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate>
@@ -471,7 +472,7 @@
 
                             <Rectangle x:Name="DragHandleGeometryPlaceholder"
                                        Grid.Column="1"
-                                       Fill="{DynamicResource AvalonDockThemeVs2013AnchorablePaneDragHandleBrush}"
+                                       Fill="{DynamicResource AvalonDockThemeVs2013ToolWindowCaptionInactiveGrip}"
                                        Visibility="Collapsed" />
                             <Rectangle x:Name="DragHandleTexture"
                                        Grid.Column="1"
@@ -511,7 +512,13 @@
                                                                Focusable="False"
                                                                Style="{StaticResource AvalonDockThemeVs2013ToolButtonStyle}"
                                                                ToolTip="{x:Static avalonDockProperties:Resources.Anchorable_CxMenu_Hint}">
-                                <Image x:Name="PART_ImgMenuPin" Source="{DynamicResource AvalonDockThemeVs2013AnchorablePaneMenuPin}" />
+                                <Rectangle x:Name="PART_ImgMenuPin"
+                                           Fill="{DynamicResource AvalonDockThemeVs2013ToolWindowCaptionButtonInactiveGlyph}"
+                                           Width="13" Height="13">
+                                    <Rectangle.OpacityMask>
+                                        <ImageBrush ImageSource="Images/PinMenu.png" />
+                                    </Rectangle.OpacityMask>
+                                </Rectangle>
                             </avalonDockControls:DropDownButton>
 
                             <Button x:Name="PART_AutoHidePin"
@@ -527,7 +534,13 @@
                                                          RelativeSource={RelativeSource Self},
                                                          Mode=OneWay,
                                                          Converter={StaticResource BoolToVisibilityConverter}}">
-                                <Image x:Name="PART_ImgAutoHidePin" Source="{DynamicResource AvalonDockThemeVs2013AnchorablePaneAutoHidePin}" />
+                                <Rectangle x:Name="PART_ImgAutoHidePin" 
+                                           Fill="{DynamicResource AvalonDockThemeVs2013ToolWindowCaptionButtonInactiveGlyph}"
+                                           Width="13" Height="13">
+                                    <Rectangle.OpacityMask>
+                                        <ImageBrush ImageSource="Images/PinAutoHide.png" />
+                                    </Rectangle.OpacityMask>
+                                </Rectangle>
                             </Button>
                             <Button x:Name="PART_HidePin"
                                     Grid.Column="4"
@@ -542,7 +555,13 @@
                                                          RelativeSource={RelativeSource Self},
                                                          Mode=OneWay,
                                                          Converter={StaticResource BoolToVisibilityConverter}}">
-                                <Image x:Name="PART_ImgHidePin" Source="{DynamicResource AvalonDockThemeVs2013AnchorablePaneHidePin}" />
+                                <Rectangle x:Name="PART_ImgHidePin" 
+                                           Fill="{DynamicResource AvalonDockThemeVs2013ToolWindowCaptionButtonInactiveGlyph}"
+                                           Width="13" Height="13">
+                                    <Rectangle.OpacityMask>
+                                        <ImageBrush ImageSource="Images/PinClose.png" />
+                                    </Rectangle.OpacityMask>
+                                </Rectangle>
                             </Button>
 
                         </Grid>
@@ -556,75 +575,93 @@
                             </Setter>
                         </DataTrigger>
 
+                        <!-- Tool Window : Caption / Active -->
                         <DataTrigger Binding="{Binding Model.IsActive, RelativeSource={RelativeSource Mode=Self}}" Value="True">
-                            <Setter Property="Background" Value="{DynamicResource AvalonDockThemeVs2013DocumentTabBrush}" />
-                            <Setter Property="Foreground" Value="{DynamicResource AvalonDockThemeVs2013DocumentTabActiveForeground}" />
-                            <Setter TargetName="DragHandleGeometryPlaceholder" Property="Fill" Value="{DynamicResource AvalonDockThemeVs2013AnchorablePaneDragHandleActiveBrush}" />
-                            <Setter TargetName="PART_ImgMenuPin" Property="Source" Value="{DynamicResource AvalonDockThemeVs2013AnchorablePaneActiveMenuPin}" />
-                            <Setter TargetName="PART_ImgAutoHidePin" Property="Source" Value="{DynamicResource AvalonDockThemeVs2013AnchorablePaneActiveAutoHidePin}" />
-                            <Setter TargetName="PART_ImgHidePin" Property="Source" Value="{DynamicResource AvalonDockThemeVs2013AnchorablePaneActiveHidePin}" />
+                            <Setter Property="Background" Value="{DynamicResource AvalonDockThemeVs2013ToolWindowCaptionActiveBackground}" />
+                            <Setter Property="Foreground" Value="{DynamicResource AvalonDockThemeVs2013ToolWindowCaptionActiveText}" />
+                            <Setter TargetName="DragHandleGeometryPlaceholder" Property="Fill" Value="{DynamicResource AvalonDockThemeVs2013ToolWindowCaptionActiveGrip}" />
+                        </DataTrigger>
+                        
+                        <!-- Tool Window : Caption : Button / Active -->
+                        <DataTrigger Binding="{Binding Model.IsActive, RelativeSource={RelativeSource Mode=Self}}" Value="True">
+                            <Setter TargetName="PART_ImgMenuPin" Property="Fill" Value="{DynamicResource AvalonDockThemeVs2013ToolWindowCaptionButtonActiveGlyph}" />
+                            <Setter TargetName="PART_ImgAutoHidePin" Property="Fill" Value="{DynamicResource AvalonDockThemeVs2013ToolWindowCaptionButtonActiveGlyph}" />
+                            <Setter TargetName="PART_ImgHidePin" Property="Fill" Value="{DynamicResource AvalonDockThemeVs2013ToolWindowCaptionButtonActiveGlyph}" />
                         </DataTrigger>
 
-                        <MultiDataTrigger>
-                            <MultiDataTrigger.Conditions>
-                                <Condition Binding="{Binding IsMouseOver, ElementName=MenuDropDownButton}" Value="True" />
-                                <Condition Binding="{Binding Model.IsActive, RelativeSource={RelativeSource Mode=Self}}" Value="False" />
-                            </MultiDataTrigger.Conditions>
-                            <Setter TargetName="MenuDropDownButton" Property="Background" Value="{DynamicResource AvalonDockThemeVs2013AnchorablePaneWidgetMouseOverBackground}" />
-                        </MultiDataTrigger>
-
+                        <!-- Tool Window : Caption : Button / Active, hovered -->
                         <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>
                                 <Condition Binding="{Binding IsMouseOver, ElementName=MenuDropDownButton}" Value="True" />
                                 <Condition Binding="{Binding Model.IsActive, RelativeSource={RelativeSource Mode=Self}}" Value="True" />
                             </MultiDataTrigger.Conditions>
-                            <Setter TargetName="MenuDropDownButton" Property="Background" Value="{DynamicResource AvalonDockThemeVs2013AnchorablePaneActiveWidgetMouseOverBackground}" />
+                            <Setter TargetName="MenuDropDownButton" Property="Background" Value="{DynamicResource AvalonDockThemeVs2013ToolWindowCaptionButtonActiveHoveredBackground}" />
+                            <Setter TargetName="MenuDropDownButton" Property="BorderBrush" Value="{DynamicResource AvalonDockThemeVs2013ToolWindowCaptionButtonActiveHoveredBorder}" />
+                            <Setter TargetName="PART_ImgMenuPin" Property="Fill" Value="{DynamicResource AvalonDockThemeVs2013ToolWindowCaptionButtonActiveHoveredGlyph}" />
+                        </MultiDataTrigger>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding IsMouseOver, ElementName=PART_AutoHidePin}" Value="True" />
+                                <Condition Binding="{Binding Model.IsActive, RelativeSource={RelativeSource Mode=Self}}" Value="True" />
+                            </MultiDataTrigger.Conditions>
+                            <Setter TargetName="PART_AutoHidePin" Property="Background" Value="{DynamicResource AvalonDockThemeVs2013ToolWindowCaptionButtonActiveHoveredBackground}" />
+                            <Setter TargetName="PART_AutoHidePin" Property="BorderBrush" Value="{DynamicResource AvalonDockThemeVs2013ToolWindowCaptionButtonActiveHoveredBorder}" />
+                            <Setter TargetName="PART_ImgAutoHidePin" Property="Fill" Value="{DynamicResource AvalonDockThemeVs2013ToolWindowCaptionButtonActiveHoveredGlyph}" />
+                        </MultiDataTrigger>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding IsMouseOver, ElementName=PART_HidePin}" Value="True" />
+                                <Condition Binding="{Binding Model.IsActive, RelativeSource={RelativeSource Mode=Self}}" Value="True" />
+                            </MultiDataTrigger.Conditions>
+                            <Setter TargetName="PART_HidePin" Property="Background" Value="{DynamicResource AvalonDockThemeVs2013ToolWindowCaptionButtonActiveHoveredBackground}" />
+                            <Setter TargetName="PART_HidePin" Property="BorderBrush" Value="{DynamicResource AvalonDockThemeVs2013ToolWindowCaptionButtonActiveHoveredBorder}" />
+                            <Setter TargetName="PART_ImgHidePin" Property="Fill" Value="{DynamicResource AvalonDockThemeVs2013ToolWindowCaptionButtonActiveHoveredGlyph}" />
                         </MultiDataTrigger>
 
+                        <!-- Tool Window : Caption : Button / Inactive, hovered -->
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding IsMouseOver, ElementName=MenuDropDownButton}" Value="True" />
+                                <Condition Binding="{Binding Model.IsActive, RelativeSource={RelativeSource Mode=Self}}" Value="False" />
+                            </MultiDataTrigger.Conditions>
+                            <Setter TargetName="MenuDropDownButton" Property="Background" Value="{DynamicResource AvalonDockThemeVs2013ToolWindowCaptionButtonInactiveHoveredBackground}" />
+                            <Setter TargetName="MenuDropDownButton" Property="BorderBrush" Value="{DynamicResource AvalonDockThemeVs2013ToolWindowCaptionButtonInactiveHoveredBorder}" />
+                            <Setter TargetName="PART_ImgMenuPin" Property="Fill" Value="{DynamicResource AvalonDockThemeVs2013ToolWindowCaptionButtonInactiveHoveredGlyph}" />
+                        </MultiDataTrigger>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding IsMouseOver, ElementName=PART_AutoHidePin}" Value="True" />
+                                <Condition Binding="{Binding Model.IsActive, RelativeSource={RelativeSource Mode=Self}}" Value="False" />
+                            </MultiDataTrigger.Conditions>
+                            <Setter TargetName="PART_AutoHidePin" Property="Background" Value="{DynamicResource AvalonDockThemeVs2013ToolWindowCaptionButtonInactiveHoveredBackground}" />
+                            <Setter TargetName="PART_AutoHidePin" Property="BorderBrush" Value="{DynamicResource AvalonDockThemeVs2013ToolWindowCaptionButtonInactiveHoveredBorder}" />
+                            <Setter TargetName="PART_ImgAutoHidePin" Property="Fill" Value="{DynamicResource AvalonDockThemeVs2013ToolWindowCaptionButtonInactiveHoveredGlyph}" />
+                        </MultiDataTrigger>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding IsMouseOver, ElementName=PART_HidePin}" Value="True" />
+                                <Condition Binding="{Binding Model.IsActive, RelativeSource={RelativeSource Mode=Self}}" Value="False" />
+                            </MultiDataTrigger.Conditions>
+                            <Setter TargetName="PART_HidePin" Property="Background" Value="{DynamicResource AvalonDockThemeVs2013ToolWindowCaptionButtonInactiveHoveredBackground}" />
+                            <Setter TargetName="PART_HidePin" Property="BorderBrush" Value="{DynamicResource AvalonDockThemeVs2013ToolWindowCaptionButtonInactiveHoveredBorder}" />
+                            <Setter TargetName="PART_ImgHidePin" Property="Fill" Value="{DynamicResource AvalonDockThemeVs2013ToolWindowCaptionButtonInactiveHoveredGlyph}" />
+                        </MultiDataTrigger>
+
+                        <!-- Tool Window : Caption : Button / Active / Inactive, pressed -->
                         <Trigger SourceName="MenuDropDownButton" Property="IsChecked" Value="True">
-                            <Setter TargetName="MenuDropDownButton" Property="Background" Value="{DynamicResource AvalonDockThemeVs2013AnchorablePaneActiveWidgetSelectedBackground}" />
+                            <Setter TargetName="MenuDropDownButton" Property="Background" Value="{DynamicResource AvalonDockThemeVs2013ToolWindowCaptionButtonActivePressedBackground}" />
+                            <Setter TargetName="MenuDropDownButton" Property="BorderBrush" Value="{DynamicResource AvalonDockThemeVs2013ToolWindowCaptionButtonActivePressedBorder}" />
+                            <Setter TargetName="PART_ImgMenuPin" Property="Fill" Value="{DynamicResource AvalonDockThemeVs2013ToolWindowCaptionButtonActivePressedGlyph}" />
                         </Trigger>
-
-                        <MultiDataTrigger>
-                            <MultiDataTrigger.Conditions>
-                                <Condition Binding="{Binding IsMouseOver, ElementName=PART_AutoHidePin}" Value="True" />
-                                <Condition Binding="{Binding Model.IsActive, RelativeSource={RelativeSource Mode=Self}}" Value="False" />
-                            </MultiDataTrigger.Conditions>
-                            <Setter TargetName="PART_AutoHidePin" Property="Background" Value="{DynamicResource AvalonDockThemeVs2013AnchorablePaneWidgetMouseOverBackground}" />
-                        </MultiDataTrigger>
-
-                        <MultiDataTrigger>
-                            <MultiDataTrigger.Conditions>
-                                <Condition Binding="{Binding IsMouseOver, ElementName=PART_AutoHidePin}" Value="True" />
-                                <Condition Binding="{Binding Model.IsActive, RelativeSource={RelativeSource Mode=Self}}" Value="True" />
-                            </MultiDataTrigger.Conditions>
-                            <Setter TargetName="PART_AutoHidePin" Property="Background" Value="{DynamicResource AvalonDockThemeVs2013AnchorablePaneActiveWidgetMouseOverBackground}" />
-                        </MultiDataTrigger>
-
                         <Trigger SourceName="PART_AutoHidePin" Property="IsMouseCaptured" Value="True">
-                            <Setter TargetName="PART_ImgAutoHidePin" Property="Source" Value="{DynamicResource AvalonDockThemeVs2013AnchorablePaneAutoHidePinSelected}" />
-                            <Setter TargetName="PART_AutoHidePin" Property="Background" Value="{DynamicResource AvalonDockThemeVs2013AnchorablePaneActiveWidgetSelectedBackground}" />
+                            <Setter TargetName="PART_AutoHidePin" Property="Background" Value="{DynamicResource AvalonDockThemeVs2013ToolWindowCaptionButtonActivePressedBackground}" />
+                            <Setter TargetName="PART_AutoHidePin" Property="BorderBrush" Value="{DynamicResource AvalonDockThemeVs2013ToolWindowCaptionButtonActivePressedBorder}" />
+                            <Setter TargetName="PART_ImgAutoHidePin" Property="Fill" Value="{DynamicResource AvalonDockThemeVs2013ToolWindowCaptionButtonActivePressedGlyph}" />
                         </Trigger>
-
-                        <MultiDataTrigger>
-                            <MultiDataTrigger.Conditions>
-                                <Condition Binding="{Binding IsMouseOver, ElementName=PART_HidePin}" Value="True" />
-                                <Condition Binding="{Binding Model.IsActive, RelativeSource={RelativeSource Mode=Self}}" Value="False" />
-                            </MultiDataTrigger.Conditions>
-                            <Setter TargetName="PART_HidePin" Property="Background" Value="{DynamicResource AvalonDockThemeVs2013AnchorablePaneWidgetMouseOverBackground}" />
-                        </MultiDataTrigger>
-
-                        <MultiDataTrigger>
-                            <MultiDataTrigger.Conditions>
-                                <Condition Binding="{Binding IsMouseOver, ElementName=PART_HidePin}" Value="True" />
-                                <Condition Binding="{Binding Model.IsActive, RelativeSource={RelativeSource Mode=Self}}" Value="True" />
-                            </MultiDataTrigger.Conditions>
-                            <Setter TargetName="PART_HidePin" Property="Background" Value="{DynamicResource AvalonDockThemeVs2013AnchorablePaneActiveWidgetMouseOverBackground}" />
-                        </MultiDataTrigger>
-
                         <Trigger SourceName="PART_HidePin" Property="IsMouseCaptured" Value="True">
-                            <Setter TargetName="PART_ImgHidePin" Property="Source" Value="{DynamicResource AvalonDockThemeVs2013AnchorablePaneActiveHidePinSelected}" />
-                            <Setter TargetName="PART_HidePin" Property="Background" Value="{DynamicResource AvalonDockThemeVs2013AnchorablePaneActiveWidgetSelectedBackground}" />
+                            <Setter TargetName="PART_HidePin" Property="Background" Value="{DynamicResource AvalonDockThemeVs2013ToolWindowCaptionButtonActivePressedBackground}" />
+                            <Setter TargetName="PART_HidePin" Property="BorderBrush" Value="{DynamicResource AvalonDockThemeVs2013ToolWindowCaptionButtonActivePressedBorder}" />
+                            <Setter TargetName="PART_ImgHidePin" Property="Fill" Value="{DynamicResource AvalonDockThemeVs2013ToolWindowCaptionButtonActivePressedGlyph}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
