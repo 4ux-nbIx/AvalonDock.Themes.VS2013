@@ -56,12 +56,12 @@
 
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="BorderBrush" Value="{DynamicResource AvalonDock_ThemeMetro_BaseColor31}" />
-                <Setter Property="Background" Value="{DynamicResource AvalonDock_ThemeMetro_BaseColor10}" />
+                <!--<Setter Property="BorderBrush" Value="{DynamicResource AvalonDock_ThemeMetro_BaseColor31}" />
+                <Setter Property="Background" Value="{DynamicResource AvalonDock_ThemeMetro_BaseColor10}" />-->
             </Trigger>
             <Trigger Property="IsChecked" Value="True">
-                <Setter Property="BorderBrush" Value="{DynamicResource AvalonDock_ThemeMetro_BaseColor31}" />
-                <Setter Property="Background" Value="{DynamicResource AvalonDock_ThemeMetro_BaseColor10}" />
+                <!--<Setter Property="BorderBrush" Value="{DynamicResource AvalonDock_ThemeMetro_BaseColor31}" />
+                <Setter Property="Background" Value="{DynamicResource AvalonDock_ThemeMetro_BaseColor10}" />-->
             </Trigger>
         </Style.Triggers>
     </Style>
@@ -700,10 +700,11 @@
     <ControlTemplate x:Key="AvalonDockThemeVs2013AnchorTemplate" TargetType="{x:Type avalonDockControls:LayoutAnchorControl}">
         <Border x:Name="Bd"
                 Margin="0,0,12,0"
-                BorderBrush="{DynamicResource AvalonDockThemeVs2013DocumentTabInactiveBrush}"
+                BorderBrush="{DynamicResource AvalonDockThemeVs2013AutoHideTabDefaultBorder}"
                 BorderThickness="0,0,0,6"
-                Background="Transparent"
-                Padding="0,0,0,3">
+                Background="{DynamicResource AvalonDockThemeVs2013AutoHideTabDefaultBackground}"
+                Padding="0,3,0,3"
+                TextElement.Foreground="{DynamicResource AvalonDockThemeVs2013AutoHideTabDefaultText}">
             <ContentPresenter Content="{Binding Model,
                                                 RelativeSource={RelativeSource TemplatedParent}}"
                               ContentTemplate="{Binding AnchorableHeaderTemplate,
@@ -713,28 +714,30 @@
                               ContentTemplateSelector="{Binding AnchorableHeaderTemplateSelector,
                                                                 Mode=OneWay,
                                                                 RelativeSource={RelativeSource AncestorType={x:Type avalonDock:DockingManager},
-                                                                                               Mode=FindAncestor}}"
-                              TextElement.Foreground="{DynamicResource AvalonDockThemeVs2013BaseColor2}" />
+                                                                                               Mode=FindAncestor}}" />
         </Border>
         <ControlTemplate.Triggers>
             <Trigger Property="Side" Value="Right">
                 <Setter TargetName="Bd" Property="BorderThickness" Value="0,6,0,0" />
-                <Setter TargetName="Bd" Property="Padding" Value="0,3,0,0" />
+                <Setter TargetName="Bd" Property="Padding" Value="0,3,0,3" />
             </Trigger>
             
             <Trigger Property="Side" Value="Top">
                 <Setter TargetName="Bd" Property="BorderThickness" Value="0,6,0,0" />
-                <Setter TargetName="Bd" Property="Padding" Value="0,3,0,0" />
+                <Setter TargetName="Bd" Property="Padding" Value="0,3,0,3" />
             </Trigger>
             
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter TargetName="Bd" Property="BorderBrush" Value="{DynamicResource AvalonDockThemeVs2013DocumentTabBrush}" />
+                <Setter TargetName="Bd" Property="Background" Value="{DynamicResource AvalonDockThemeVs2013AutoHideTabHoveredBackground}" />
+                <Setter TargetName="Bd" Property="BorderBrush" Value="{DynamicResource AvalonDockThemeVs2013AutoHideTabHoveredBorder}" />
+                <Setter TargetName="Bd" Property="TextElement.Foreground" Value="{DynamicResource AvalonDockThemeVs2013AutoHideTabHoveredText}" />
             </Trigger>
             
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
     <Style x:Key="{x:Type avalonDockControls:OverlayWindow}" TargetType="{x:Type avalonDockControls:OverlayWindow}">
+        <Setter Property="UseLayoutRounding" Value="True" />
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="Template">
             <Setter.Value>
@@ -1677,8 +1680,8 @@
                             <Setter TargetName="WindowBorder" Property="Padding" Value="3" />
                         </Trigger>
                         <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=Model.SinglePane.SelectedContent.IsActive}" Value="True">
-                            <Setter TargetName="Header" Property="Background" Value="{DynamicResource AvalonDockThemeVs2013BaseColor3}" />
-                            <Setter TargetName="Header" Property="TextElement.Foreground" Value="{DynamicResource AvalonDockThemeVs2013BaseColor1}" />
+                            <Setter TargetName="Header" Property="Background" Value="{DynamicResource AvalonDockThemeVs2013ToolWindowCaptionActiveBackground}" />
+                            <Setter TargetName="Header" Property="TextElement.Foreground" Value="{DynamicResource AvalonDockThemeVs2013ToolWindowCaptionActiveText}" />
                             <Setter TargetName="PART_ImgPinClose" Property="Source" Value="Images/PinClose_Dark.png" />
                             <Setter TargetName="PART_ImgPinRestore" Property="Source" Value="Images/PinRestore_Dark.png" />
                             <Setter TargetName="PART_ImgPinMaximize" Property="Source" Value="Images/PinMaximize_Dark.png" />
@@ -1707,6 +1710,14 @@
 
     <Style x:Key="{x:Type avalonDockControls:LayoutAutoHideWindowControl}" TargetType="{x:Type avalonDockControls:LayoutAutoHideWindowControl}">
         <Setter Property="Background" Value="{DynamicResource AvalonDockThemeVs2013TabBackground}" />
+        <Setter Property="AnchorableStyle">
+            <Setter.Value>
+                <Style TargetType="avalonDockControls:LayoutAnchorableControl">
+                    <Setter Property="BorderBrush" Value="{DynamicResource AvalonDockThemeVs2013PanelBorderBrush}" />
+                    <Setter Property="BorderThickness" Value="1" />
+                </Style>
+            </Setter.Value>
+        </Setter>
     </Style>
 
 
@@ -1859,7 +1870,7 @@
                                 <Border Grid.Row="1"
                                         MinHeight="200"
                                         Background="{DynamicResource AvalonDockThemeVs2013BaseColor7}"
-                                        BorderBrush="{DynamicResource AvalonDock_ThemeMetro_BaseColor11}"
+                                        BorderBrush="Transparent"
                                         BorderThickness="0,1,0,0">
                                     <Grid Margin="5">
                                         <Grid.ColumnDefinitions>

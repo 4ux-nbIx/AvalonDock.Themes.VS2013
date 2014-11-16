@@ -21,25 +21,23 @@
 
 
     <SolidColorBrush x:Key="AvalonDockThemeVs2013BaseColor1" Color="#EEEEF2" />
-
     <SolidColorBrush x:Key="AvalonDockThemeVs2013BaseColor2" Color="Black" />
-
     <SolidColorBrush x:Key="AvalonDockThemeVs2013BaseColor3" Color="#41B1E1" />
-
     <SolidColorBrush x:Key="AvalonDockThemeVs2013BaseColor4" Color="#5EA1C0" />
-
     <SolidColorBrush x:Key="AvalonDockThemeVs2013BaseColor5" Color="#333333" />
-
     <SolidColorBrush x:Key="AvalonDockThemeVs2013BaseColor6" Color="#8C8E94" />
-
     <SolidColorBrush x:Key="AvalonDockThemeVs2013BaseColor7" Color="#EEEEEE" />
-
-    <SolidColorBrush x:Key="AvalonDockThemeVs2013DocumentTabBrush" Color="#FF007ACC" />
-    <SolidColorBrush x:Key="AvalonDockThemeVs2013DocumentTabMouseOverBrush" Color="#FF1C97EA" />
-    <SolidColorBrush x:Key="AvalonDockThemeVs2013DocumentTabInactiveBrush" Color="#FFCCCEDB" />
 
     <SolidColorBrush x:Key="AvalonDockThemeVs2013PanelBorderBrush" Color="#FFCCCEDB" />
     <SolidColorBrush x:Key="AvalonDockThemeVs2013TabBackground" Color="#FFF5F5F5" />
+    
+    <!-- Auto Hide : Tab -->
+    <SolidColorBrush x:Key="AvalonDockThemeVs2013AutoHideTabDefaultBackground" Color="#EEEEF2" />
+    <SolidColorBrush x:Key="AvalonDockThemeVs2013AutoHideTabDefaultBorder" Color="#CCCEDB" />
+    <SolidColorBrush x:Key="AvalonDockThemeVs2013AutoHideTabDefaultText" Color="#444444" />
+    <SolidColorBrush x:Key="AvalonDockThemeVs2013AutoHideTabHoveredBackground" Color="#EEEEF2" />
+    <SolidColorBrush x:Key="AvalonDockThemeVs2013AutoHideTabHoveredBorder" Color="#007ACC" />
+    <SolidColorBrush x:Key="AvalonDockThemeVs2013AutoHideTabHoveredText" Color="#0E70C0" />
     
     <!-- Document Well : Overflow Button -->
     <SolidColorBrush x:Key="AvalonDockThemeVs2013DocumentWellOverflowButtonDefaultGlyph" Color="#717171" />
