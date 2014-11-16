@@ -1818,20 +1818,20 @@
         <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" />
         <Setter Property="SizeToContent" Value="WidthAndHeight" />
         <Setter Property="ResizeMode" Value="NoResize" />
-        <Setter Property="shell:WindowChrome.WindowChrome">
+        <!--<Setter Property="shell:WindowChrome.WindowChrome">
             <Setter.Value>
                 <shell:WindowChrome CaptionHeight="16"
                                     GlassFrameThickness="4"
                                     ResizeBorderThickness="10" />
             </Setter.Value>
-        </Setter>
+        </Setter>-->
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type avalonDockControls:NavigatorWindow}">
                     <Grid>
                         <Border x:Name="WindowBorder"
-                                Background="{DynamicResource AvalonDockThemeVs2013BaseColor2}"
-                                BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}"
+                                Background="{DynamicResource AvalonDockThemeVs2013BaseColor1}"
+                                BorderBrush="{DynamicResource AvalonDockThemeVs2013PanelBorderBrush}"
                                 BorderThickness="1">
                             <Grid>
                                 <Grid.RowDefinitions>
@@ -1851,19 +1851,21 @@
                                             <ColumnDefinition />
                                         </Grid.ColumnDefinitions>
                                         <Image Source="{Binding SelectedDocument.LayoutElement.IconSource,
+                                                                RelativeSource={RelativeSource TemplatedParent},
                                                                 Converter={StaticResource NullToDoNothingConverter}}"
                                                Stretch="None"
                                                Visibility="{Binding SelectedDocument.LayoutElement.IconSource,
+                                                                    RelativeSource={RelativeSource TemplatedParent},
                                                                     Converter={StaticResource BoolToVisibilityConverter}}" />
                                         <TextBlock Grid.Column="1"
                                                    Margin="4,0,0,0"
                                                    VerticalAlignment="Center"
                                                    FontWeight="Bold"
-                                                   Text="{Binding SelectedDocument.LayoutElement.Title}"
+                                                   Text="{Binding SelectedDocument.LayoutElement.Title, RelativeSource={RelativeSource TemplatedParent}}"
                                                    TextTrimming="CharacterEllipsis" />
                                     </Grid>
                                     <TextBlock VerticalAlignment="Center"
-                                               Text="{Binding SelectedDocument.LayoutElement.Description}"
+                                               Text="{Binding SelectedDocument.LayoutElement.Description, RelativeSource={RelativeSource TemplatedParent}}"
                                                TextTrimming="CharacterEllipsis" />
                                 </Grid>
 
@@ -1952,7 +1954,7 @@
                                 </Border>
 
                                 <Grid Grid.Row="2" Margin="5">
-                                    <TextBlock VerticalAlignment="Center" Text="{Binding SelectedDocument.LayoutElement.ToolTip}" />
+                                    <TextBlock VerticalAlignment="Center" Text="{Binding SelectedDocument.LayoutElement.ToolTip, RelativeSource={RelativeSource TemplatedParent}}" />
                                 </Grid>
                             </Grid>
                         </Border>
