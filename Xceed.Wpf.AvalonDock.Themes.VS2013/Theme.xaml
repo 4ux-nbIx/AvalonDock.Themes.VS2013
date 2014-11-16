@@ -106,7 +106,7 @@
                             </Grid.ColumnDefinitions>
                             <Border x:Name="BD"
                                     Grid.ColumnSpan="2"
-                                    BorderBrush="{DynamicResource AvalonDockThemeVs2013DocumentTabBrush}"
+                                    BorderBrush="{DynamicResource AvalonDockThemeVs2013DocumentWellTabSelectedActiveBackground}"
                                     BorderThickness="0,0,0,2" />
                             <avalonDockControls:DocumentPaneTabPanel x:Name="HeaderPanel"
                                                                      Grid.Row="0"
@@ -132,7 +132,13 @@
                                         </avalonDockControls:ContextMenuEx.ItemContainerStyle>
                                     </avalonDockControls:ContextMenuEx>
                                 </avalonDockControls:DropDownButton.DropDownContextMenu>
-                                <Image Source="Images/PinDocMenu.png" />
+                                <Rectangle x:Name="MenuDropDownButtonImage"
+                                           Fill="{DynamicResource AvalonDockThemeVs2013DocumentWellOverflowButtonDefaultGlyph}"
+                                           Width="12" Height="12">
+                                    <Rectangle.OpacityMask>
+                                        <ImageBrush ImageSource="Images/PinDocMenu.png" />
+                                    </Rectangle.OpacityMask>
+                                </Rectangle>
                             </avalonDockControls:DropDownButton>
                         </Grid>
                         <Border x:Name="ContentPanel"
@@ -155,26 +161,22 @@
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger SourceName="MenuDropDownButton" Property="IsMouseOver" Value="True">
-                            <Setter TargetName="MenuDropDownButton" Property="Content">
-                                <Setter.Value>
-                                    <Image Source="Images/PinDocMenu_Black.png" />
-                                </Setter.Value>
-                            </Setter>
+                            <Setter TargetName="MenuDropDownButton" Property="Background" Value="{DynamicResource AvalonDockThemeVs2013DocumentWellOverflowButtonHoveredBackground}" />
+                            <Setter TargetName="MenuDropDownButton" Property="BorderBrush" Value="{DynamicResource AvalonDockThemeVs2013DocumentWellOverflowButtonHoveredBorder}" />
+                            <Setter TargetName="MenuDropDownButtonImage" Property="Fill" Value="{DynamicResource AvalonDockThemeVs2013DocumentWellOverflowButtonHoveredGlyph}" />
                         </Trigger>
 
                         <Trigger SourceName="MenuDropDownButton" Property="IsChecked" Value="True">
-                            <Setter TargetName="MenuDropDownButton" Property="Content">
-                                <Setter.Value>
-                                    <Image Source="Images/PinDocMenu_Black.png" />
-                                </Setter.Value>
-                            </Setter>
+                            <Setter TargetName="MenuDropDownButton" Property="Background" Value="{DynamicResource AvalonDockThemeVs2013DocumentWellOverflowButtonPressedBackground}" />
+                            <Setter TargetName="MenuDropDownButton" Property="BorderBrush" Value="{DynamicResource AvalonDockThemeVs2013DocumentWellOverflowButtonPressedBorder}" />
+                            <Setter TargetName="MenuDropDownButtonImage" Property="Fill" Value="{DynamicResource AvalonDockThemeVs2013DocumentWellOverflowButtonPressedGlyph}" />
                         </Trigger>
 
                         <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>
                                 <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=Model.SelectedContent.IsActive}" Value="False" />
                             </MultiDataTrigger.Conditions>
-                            <Setter TargetName="BD" Property="BorderBrush" Value="{DynamicResource AvalonDockThemeVs2013DocumentTabInactiveBrush}" />
+                            <Setter TargetName="BD" Property="BorderBrush" Value="{DynamicResource AvalonDockThemeVs2013DocumentWellTabSelectedInactiveBackground}" />
                         </MultiDataTrigger>
 
                         <Trigger Property="IsEnabled" Value="false">
@@ -182,6 +184,8 @@
                         </Trigger>
 
                         <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Model.ChildrenCount}" Value="0">
+                            <Setter TargetName="BD" Property="BorderBrush" Value="Transparent" />
+                            <Setter TargetName="ContentPanel" Property="Visibility" Value="Collapsed" />
                             <Setter TargetName="MenuDropDownButton" Property="Visibility" Value="Collapsed" />
                         </DataTrigger>
                     </ControlTemplate.Triggers>
@@ -192,7 +196,7 @@
             <Setter.Value>
                 <Style TargetType="{x:Type TabItem}">
                     <Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay}" />
-                    <Setter Property="Background" Value="Transparent" />
+                    <Setter Property="Background" Value="{DynamicResource AvalonDockThemeVs2013DocumentWellTabUnselectedBackground}" />
                     <Setter Property="BorderBrush" Value="Transparent" />
                     <Setter Property="ToolTip" Value="{Binding ToolTip}" />
                     <Setter Property="Padding" Value="6,1" />
@@ -203,7 +207,7 @@
                                 <Grid SnapsToDevicePixels="true">
                                     <Border x:Name="Bd"
                                             Background="{TemplateBinding Background}"
-                                            BorderBrush="{DynamicResource AvalonDockThemeVs2013DocumentTabBrush}"
+                                            BorderBrush="{Binding Background, RelativeSource={RelativeSource Self}}"
                                             BorderThickness="0,0,0,2" />
                                     <ContentPresenter x:Name="Content"
                                                       HorizontalAlignment="{Binding HorizontalContentAlignment,
@@ -216,43 +220,43 @@
                                 </Grid>
                                 <ControlTemplate.Triggers>
                                     <Trigger Property="Selector.IsSelected" Value="true">
-                                        <Setter TargetName="Bd" Property="Background" Value="{DynamicResource AvalonDockThemeVs2013DocumentTabBrush}" />
-                                        <Setter Property="Foreground" Value="{DynamicResource AvalonDockThemeVs2013DocumentTabActiveForeground}" />
                                         <Setter Property="Panel.ZIndex" Value="1" />
                                     </Trigger>
 
+                                    <!-- Document Well : Tab / Selected, active -->
                                     <DataTrigger Binding="{Binding IsActive}" Value="True">
-                                        <Setter Property="Foreground" Value="{DynamicResource AvalonDockThemeVs2013DocumentTabActiveForeground}" />
+                                        <Setter TargetName="Bd" Property="Background" Value="{DynamicResource AvalonDockThemeVs2013DocumentWellTabSelectedActiveBackground}" />
+                                        <Setter Property="Foreground" Value="{DynamicResource AvalonDockThemeVs2013DocumentWellTabSelectedActiveText}" />
                                         <Setter Property="Panel.ZIndex" Value="1" />
                                     </DataTrigger>
 
+                                    <!-- Document Well : Tab / Selected, inactive -->
                                     <MultiDataTrigger>
                                         <MultiDataTrigger.Conditions>
                                             <Condition Binding="{Binding IsActive}" Value="False" />
                                             <Condition Binding="{Binding IsSelected}" Value="True" />
                                         </MultiDataTrigger.Conditions>
-
-                                        <Setter TargetName="Bd" Property="Background" Value="{DynamicResource AvalonDockThemeVs2013DocumentTabInactiveBrush}" />
-                                        <Setter TargetName="Bd" Property="BorderBrush" Value="{DynamicResource AvalonDockThemeVs2013DocumentTabInactiveBrush}" />
-                                        <Setter Property="Foreground" Value="{DynamicResource AvalonDockThemeVs2013DocumentTabInactiveForeground}" />
+                                        <Setter TargetName="Bd" Property="Background" Value="{DynamicResource AvalonDockThemeVs2013DocumentWellTabSelectedInactiveBackground}" />
+                                        <Setter Property="Foreground" Value="{DynamicResource AvalonDockThemeVs2013DocumentWellTabSelectedInactiveText}" />
                                     </MultiDataTrigger>
 
+                                    <!-- Document Well : Tab / Unselected -->
                                     <MultiDataTrigger>
                                         <MultiDataTrigger.Conditions>
                                             <Condition Binding="{Binding IsActive}" Value="False" />
                                             <Condition Binding="{Binding IsSelected}" Value="False" />
                                         </MultiDataTrigger.Conditions>
-
                                         <Setter TargetName="Bd" Property="BorderBrush" Value="Transparent" />
                                     </MultiDataTrigger>
 
+                                    <!-- Document Well : Tab / Unselected, hovered -->
                                     <MultiTrigger>
                                         <MultiTrigger.Conditions>
                                             <Condition Property="IsMouseOver" Value="true" />
                                             <Condition Property="Selector.IsSelected" Value="false" />
                                         </MultiTrigger.Conditions>
-                                        <Setter TargetName="Bd" Property="Background" Value="{DynamicResource AvalonDockThemeVs2013DocumentTabMouseOverBrush}" />
-                                        <Setter Property="Foreground" Value="{DynamicResource AvalonDockThemeVs2013DocumentTabActiveForeground}" />
+                                        <Setter TargetName="Bd" Property="Background" Value="{DynamicResource AvalonDockThemeVs2013DocumentWellTabUnselectedHoveredBackground}" />
+                                        <Setter Property="Foreground" Value="{DynamicResource AvalonDockThemeVs2013DocumentWellTabUnselectedHoveredText}" />
                                         <Setter Property="Panel.ZIndex" Value="0" />
                                     </MultiTrigger>
 
@@ -336,9 +340,9 @@
         <Setter Property="ItemContainerStyle">
             <Setter.Value>
                 <Style TargetType="{x:Type TabItem}">
-                    <Setter Property="Background" Value="Transparent" />
+                    <Setter Property="Background" Value="{DynamicResource AvalonDockThemeVs2013ToolWindowTabUnselectedBackground}" />
                     <Setter Property="BorderBrush" Value="Transparent" />
-                    <Setter Property="Foreground" Value="{DynamicResource AvalonDockThemeVs2013BaseColor5}" />
+                    <Setter Property="Foreground" Value="{DynamicResource AvalonDockThemeVs2013ToolWindowTabUnselectedText}" />
                     <Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay}" />
                     <Setter Property="ToolTip" Value="{Binding ToolTip}" />
                     <Setter Property="Template">
@@ -347,10 +351,9 @@
                                 <Grid SnapsToDevicePixels="true">
                                     <Border x:Name="SelectedBD"
                                             Margin="1,-1,1,0"
-                                            BorderBrush="{DynamicResource AvalonDockThemeVs2013TabBackground}"
+                                            BorderBrush="{DynamicResource AvalonDockThemeVs2013ToolWindowTabSelectedActiveBackground}"
                                             BorderThickness="0,1,0,0"
                                             Visibility="Collapsed" />
-
                                     <Border x:Name="Bd"
                                             Margin="0"
                                             Background="{TemplateBinding Background}"
@@ -371,31 +374,37 @@
                                     <Trigger Property="Selector.IsSelected" Value="true">
                                         <Setter TargetName="SelectedBD" Property="Visibility" Value="Visible" />
                                         <Setter TargetName="Bd" Property="BorderThickness" Value="1,0,1,1" />
-                                        <Setter Property="Background" Value="{DynamicResource AvalonDockThemeVs2013TabBackground}" />
-                                        <Setter Property="Foreground" Value="{DynamicResource AvalonDockThemeVs2013DocumentTabBrush}" />
                                         <Setter Property="Panel.ZIndex" Value="1" />
                                     </Trigger>
+                                    
+                                    <!-- Tool Window : Tab / Selected, active -->
+                                    <MultiDataTrigger>
+                                        <MultiDataTrigger.Conditions>
+                                            <Condition Binding="{Binding IsSelected}" Value="True" />
+                                            <Condition Binding="{Binding IsActive}" Value="True" />
+                                        </MultiDataTrigger.Conditions>
+                                        <Setter Property="Background" Value="{DynamicResource AvalonDockThemeVs2013ToolWindowTabSelectedActiveBackground}" />
+                                        <Setter Property="Foreground" Value="{DynamicResource AvalonDockThemeVs2013ToolWindowTabSelectedActiveText}" />
+                                    </MultiDataTrigger>
 
-                                    <!--
-                                        <Trigger Property="Selector.IsSelected" Value="false">
-                                        <Setter TargetName="Bd" Property="BorderThickness" Value="0,1,0,0" />
-                                        </Trigger>
-                                    -->
+                                    <!-- Tool Window : Tab / Selected, inactive -->
+                                    <MultiDataTrigger>
+                                        <MultiDataTrigger.Conditions>
+                                            <Condition Binding="{Binding IsSelected}" Value="True" />
+                                            <Condition Binding="{Binding IsActive}" Value="False" />
+                                        </MultiDataTrigger.Conditions>
+                                        <Setter Property="Background" Value="{DynamicResource AvalonDockThemeVs2013ToolWindowTabSelectedInactiveBackground}" />
+                                        <Setter Property="Foreground" Value="{DynamicResource AvalonDockThemeVs2013ToolWindowTabSelectedInactiveText}" />
+                                    </MultiDataTrigger>
 
-                                    <!--
-                                        <DataTrigger Binding="{Binding IsActive}" Value="True">
-                                        <Setter Property="BorderBrush" Value="{DynamicResource AvalonDockThemeVs2013BaseColor3}" />
-                                        <Setter Property="Foreground" Value="{DynamicResource AvalonDockThemeVs2013BaseColor5}" />
-                                        <Setter Property="Panel.ZIndex" Value="1" />
-                                        </DataTrigger>
-                                    -->
-
+                                    <!-- Tool Window : Tab / Unselected, hovered -->
                                     <MultiTrigger>
                                         <MultiTrigger.Conditions>
                                             <Condition Property="IsMouseOver" Value="true" />
                                             <Condition Property="Selector.IsSelected" Value="false" />
                                         </MultiTrigger.Conditions>
-                                        <Setter Property="BorderBrush" Value="{DynamicResource AvalonDockThemeVs2013BaseColor4}" />
+                                        <Setter Property="Background" Value="{DynamicResource AvalonDockThemeVs2013ToolWindowTabUnselectedHoveredBackground}" />
+                                        <Setter Property="Foreground" Value="{DynamicResource AvalonDockThemeVs2013ToolWindowTabUnselectedHoveredText}" />
                                         <Setter Property="Panel.ZIndex" Value="0" />
                                     </MultiTrigger>
 
@@ -960,26 +969,7 @@
     </DataTemplate>
 
     <DataTemplate x:Key="AvalonDockThemeVs2013AnchorableHeaderTemplate">
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
-            <Image x:Name="icon"
-                   Source="{Binding IconSource,
-                                    Converter={StaticResource NullToDoNothingConverter}}"
-                   Stretch="Uniform" />
-            <TextBlock x:Name="title"
-                       Grid.Column="1"
-                       Margin="4,0,0,0"
-                       Text="{Binding Title}"
-                       TextTrimming="CharacterEllipsis" />
-        </Grid>
-        <DataTemplate.Triggers>
-            <DataTrigger Binding="{Binding IconSource}" Value="{x:Null}">
-                <Setter TargetName="title" Property="Margin" Value="0" />
-            </DataTrigger>
-        </DataTemplate.Triggers>
+        <TextBlock Text="{Binding Title}" TextTrimming="CharacterEllipsis" />
     </DataTemplate>
 
     <DataTemplate x:Key="AvalonDockThemeVs2013DocumentTitleTemplate">

@@ -63,16 +63,19 @@
                 <local:PanesTemplateSelector>
                     <local:PanesTemplateSelector.FileViewTemplate>
                         <DataTemplate>
-                            <TextBox Text="{Binding TextContent, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBox Text="{Binding TextContent, UpdateSourceTrigger=PropertyChanged}"
+                                     BorderThickness="0" />
                         </DataTemplate>
                     </local:PanesTemplateSelector.FileViewTemplate>
                     <local:PanesTemplateSelector.FileStatsViewTemplate>
                         <DataTemplate>
-                            <StackPanel Orientation="Vertical">
-                                <TextBlock Text="{Binding FileSize}"/>
-                                <TextBlock Text="{Binding LastModified}"/>
-                                <TextBox Text="test"/>
-                            </StackPanel>
+                            <Border Padding="5">
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Text="{Binding FileSize}"/>
+                                    <TextBlock Text="{Binding LastModified}"/>
+                                    <TextBox Text="test"/>
+                                </StackPanel>
+                            </Border>
                         </DataTemplate>
                     </local:PanesTemplateSelector.FileStatsViewTemplate>
                 </local:PanesTemplateSelector>
