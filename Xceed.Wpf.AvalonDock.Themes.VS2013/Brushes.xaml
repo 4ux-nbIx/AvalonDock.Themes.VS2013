@@ -20,7 +20,7 @@
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
 
-    <SolidColorBrush x:Key="AvalonDockThemeVs2013BaseColor1" Color="White" />
+    <SolidColorBrush x:Key="AvalonDockThemeVs2013BaseColor1" Color="#EEEEF2" />
 
     <SolidColorBrush x:Key="AvalonDockThemeVs2013BaseColor2" Color="Black" />
 
@@ -43,5 +43,19 @@
 
     <SolidColorBrush x:Key="AvalonDockThemeVs2013PanelBorderBrush" Color="#FFCCCEDB" />
     <SolidColorBrush x:Key="AvalonDockThemeVs2013TabBackground" Color="#FFF5F5F5" />
+
+    <SolidColorBrush x:Key="AvalonDockThemeVs2013AnchorablePaneDragHandleBrush" Color="#999999" />
+    <SolidColorBrush x:Key="AvalonDockThemeVs2013AnchorablePaneDragHandleActiveBrush" Color="#59A8DE" />
+    <BitmapImage x:Key="AvalonDockThemeVs2013AnchorablePaneMenuPin" UriSource="Images/PinMenu_Black.png" />
+    <BitmapImage x:Key="AvalonDockThemeVs2013AnchorablePaneAutoHidePin" UriSource="Images/PinAutoHide_Black.png" />
+    <BitmapImage x:Key="AvalonDockThemeVs2013AnchorablePaneHidePin" UriSource="Images/PinClose_Black.png" />
+    <BitmapImage x:Key="AvalonDockThemeVs2013AnchorablePaneActiveMenuPin" UriSource="Images/PinMenu_White.png" />
+    <BitmapImage x:Key="AvalonDockThemeVs2013AnchorablePaneActiveAutoHidePin" UriSource="Images/PinAutoHide_White.png" />
+    <BitmapImage x:Key="AvalonDockThemeVs2013AnchorablePaneAutoHidePinSelected" UriSource="Images/PinAutoHide_White.png" />
+    <BitmapImage x:Key="AvalonDockThemeVs2013AnchorablePaneActiveHidePin" UriSource="Images/PinClose_White.png" />
+    <BitmapImage x:Key="AvalonDockThemeVs2013AnchorablePaneActiveHidePinSelected" UriSource="Images/PinClose_White.png" />
+    <SolidColorBrush x:Key="AvalonDockThemeVs2013AnchorablePaneWidgetMouseOverBackground" Color="#FEFEFE" />
+    <SolidColorBrush x:Key="AvalonDockThemeVs2013AnchorablePaneActiveWidgetMouseOverBackground" Color="#52B0EF" />
+    <SolidColorBrush x:Key="AvalonDockThemeVs2013AnchorablePaneActiveWidgetSelectedBackground" Color="#0E6198" />
 
 </ResourceDictionary>
