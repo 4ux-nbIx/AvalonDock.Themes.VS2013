@@ -44,6 +44,29 @@
     <SolidColorBrush x:Key="AvalonDockThemeVs2013PanelBorderBrush" Color="#FFCCCEDB" />
     <SolidColorBrush x:Key="AvalonDockThemeVs2013TabBackground" Color="#FFF5F5F5" />
     
+    <!-- Document Well : Tab : Button -->
+    <SolidColorBrush x:Key="AvalonDockThemeVs2013DocumentWellTabButtonSelectedActiveGlyph" Color="#D0E6F5" />
+    <SolidColorBrush x:Key="AvalonDockThemeVs2013DocumentWellTabButtonSelectedActiveHoveredBackground" Color="#1C97EA" />
+    <SolidColorBrush x:Key="AvalonDockThemeVs2013DocumentWellTabButtonSelectedActiveHoveredBorder" Color="#1C97EA" />
+    <SolidColorBrush x:Key="AvalonDockThemeVs2013DocumentWellTabButtonSelectedActiveHoveredGlyph" Color="#FFFFFF" />
+    <SolidColorBrush x:Key="AvalonDockThemeVs2013DocumentWellTabButtonSelectedActivePressedBackground" Color="#0E6198" />
+    <SolidColorBrush x:Key="AvalonDockThemeVs2013DocumentWellTabButtonSelectedActivePressedBorder" Color="#0E6198" />
+    <SolidColorBrush x:Key="AvalonDockThemeVs2013DocumentWellTabButtonSelectedActivePressedGlyph" Color="#FFFFFF" />
+    <SolidColorBrush x:Key="AvalonDockThemeVs2013DocumentWellTabButtonSelectedInactiveGlyph" Color="#6D6D70" />
+    <SolidColorBrush x:Key="AvalonDockThemeVs2013DocumentWellTabButtonSelectedInactiveHoveredBackground" Color="#E6E7ED" />
+    <SolidColorBrush x:Key="AvalonDockThemeVs2013DocumentWellTabButtonSelectedInactiveHoveredBorder" Color="#E6E7ED" />
+    <SolidColorBrush x:Key="AvalonDockThemeVs2013DocumentWellTabButtonSelectedInactiveHoveredGlyph" Color="#717171" />
+    <SolidColorBrush x:Key="AvalonDockThemeVs2013DocumentWellTabButtonSelectedInactivePressedBackground" Color="#B7B9C5" />
+    <SolidColorBrush x:Key="AvalonDockThemeVs2013DocumentWellTabButtonSelectedInactivePressedBorder" Color="#B7B9C5" />
+    <SolidColorBrush x:Key="AvalonDockThemeVs2013DocumentWellTabButtonSelectedInactivePressedGlyph" Color="#2D2D2D" />
+    <SolidColorBrush x:Key="AvalonDockThemeVs2013DocumentWellTabButtonUnselectedTabHoveredGlyph" Color="#D0E6F5" />
+    <SolidColorBrush x:Key="AvalonDockThemeVs2013DocumentWellTabButtonUnselectedTabHoveredButtonHoveredBackground" Color="#52B0EF" />
+    <SolidColorBrush x:Key="AvalonDockThemeVs2013DocumentWellTabButtonUnselectedTabHoveredButtonHoveredBorder" Color="#52B0EF" />
+    <SolidColorBrush x:Key="AvalonDockThemeVs2013DocumentWellTabButtonUnselectedTabHoveredButtonHoveredGlyph" Color="#FFFFFF" />
+    <SolidColorBrush x:Key="AvalonDockThemeVs2013DocumentWellTabButtonUnselectedTabHoveredButtonPressedBackground" Color="#0E6198" />
+    <SolidColorBrush x:Key="AvalonDockThemeVs2013DocumentWellTabButtonUnselectedTabHoveredButtonPressedBorder" Color="#0E6198" />
+    <SolidColorBrush x:Key="AvalonDockThemeVs2013DocumentWellTabButtonUnselectedTabHoveredButtonPressedGlyph" Color="#FFFFFF" />
+    
     <!-- Tool Window : Caption -->
     <SolidColorBrush x:Key="AvalonDockThemeVs2013ToolWindowCaptionActiveBackground" Color="#007ACC" />
     <SolidColorBrush x:Key="AvalonDockThemeVs2013ToolWindowCaptionActiveGrip" Color="#59A8DE" />

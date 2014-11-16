@@ -22,9 +22,7 @@
                     xmlns:avalonDock="clr-namespace:Xceed.Wpf.AvalonDock;assembly=Xceed.Wpf.AvalonDock"
                     xmlns:avalonDockControls="clr-namespace:Xceed.Wpf.AvalonDock.Controls;assembly=Xceed.Wpf.AvalonDock"
                     xmlns:avalonDockConverters="clr-namespace:Xceed.Wpf.AvalonDock.Converters;assembly=Xceed.Wpf.AvalonDock"
-                    xmlns:avalonDockLayout="clr-namespace:Xceed.Wpf.AvalonDock.Layout;assembly=Xceed.Wpf.AvalonDock"
                     xmlns:avalonDockProperties="clr-namespace:Xceed.Wpf.AvalonDock.Properties;assembly=Xceed.Wpf.AvalonDock"
-                    xmlns:localThemes="clr-namespace:Xceed.Wpf.AvalonDock.Themes"
                     xmlns:shell="clr-namespace:Microsoft.Windows.Shell;assembly=Xceed.Wpf.AvalonDock">
 
     <ResourceDictionary.MergedDictionaries>
@@ -84,13 +82,6 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-
-        <Style.Triggers>
-            <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="BorderBrush" Value="{DynamicResource AvalonDock_ThemeMetro_BaseColor31}" />
-                <Setter Property="Background" Value="{DynamicResource AvalonDock_ThemeMetro_BaseColor10}" />
-            </Trigger>
-        </Style.Triggers>
     </Style>
 
     <!--  DocumentPaneControlStyle  -->
@@ -108,7 +99,7 @@
                         </Grid.RowDefinitions>
                         <!--  Following border is required to catch mouse events  -->
                         <Border Grid.RowSpan="2" Background="Transparent" />
-                        <Grid Panel.ZIndex="1">
+                        <Grid Grid.Row="0" Panel.ZIndex="1">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition />
                                 <ColumnDefinition Width="Auto" />
@@ -1196,22 +1187,20 @@
                                         Style="{StaticResource AvalonDockThemeVs2013ButtonStyle}"
                                         ToolTip="{x:Static avalonDockProperties:Resources.Document_Close}"
                                         Visibility="Hidden">
-                                    <Image x:Name="PART_ImgPinClose" Source="Images/PinClose.png" />
+                                    <Rectangle x:Name="PART_ImgPinClose"
+                                               Width="13" Height="13">
+                                        <Rectangle.OpacityMask>
+                                            <ImageBrush ImageSource="Images/PinClose.png" />
+                                        </Rectangle.OpacityMask>
+                                    </Rectangle>
                                 </Button>
                             </Grid>
                         </Border>
                     </avalonDockControls:DropDownControlArea>
                     <ControlTemplate.Triggers>
+                        <!-- Close button visibility -->
                         <DataTrigger Binding="{Binding Path=IsSelected}" Value="true">
                             <Setter TargetName="DocumentCloseButton" Property="Visibility" Value="Visible" />
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding Path=IsLastFocusedDocument}" Value="true">
-                            <Setter TargetName="DocumentCloseButton" Property="Visibility" Value="Visible" />
-                            <Setter TargetName="PART_ImgPinClose" Property="Source" Value="Images/PinClose_Dark.png" />
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding Path=IsActive}" Value="true">
-                            <Setter TargetName="DocumentCloseButton" Property="Visibility" Value="Visible" />
-                            <Setter TargetName="PART_ImgPinClose" Property="Source" Value="Images/PinClose_Dark.png" />
                         </DataTrigger>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter TargetName="DocumentCloseButton" Property="Visibility" Value="Visible" />
@@ -1219,10 +1208,105 @@
                         <DataTrigger Binding="{Binding Path=CanClose}" Value="false">
                             <Setter TargetName="DocumentCloseButton" Property="Visibility" Value="Collapsed" />
                         </DataTrigger>
-                        <Trigger SourceName="DocumentCloseButton" Property="IsMouseOver" Value="True">
-                            <Setter TargetName="PART_ImgPinClose" Property="Source" Value="Images/PinClose_Black.png" />
-                        </Trigger>
+                        <DataTrigger Binding="{Binding Path=IsLastFocusedDocument}" Value="true">
+                            <Setter TargetName="DocumentCloseButton" Property="Visibility" Value="Visible" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Path=IsActive}" Value="true">
+                            <Setter TargetName="DocumentCloseButton" Property="Visibility" Value="Visible" />
+                        </DataTrigger>
 
+                        <!-- Document Well : Tab : Button / Selected, inactive -->
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding IsLastFocusedDocument}" Value="true" />
+                            </MultiDataTrigger.Conditions>
+                            <Setter TargetName="PART_ImgPinClose" Property="Fill" Value="{DynamicResource AvalonDockThemeVs2013DocumentWellTabButtonSelectedInactiveGlyph}" />
+                        </MultiDataTrigger>
+
+                        <!-- Document Well : Tab : Button / Selected, inactive, hovered -->
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding IsLastFocusedDocument}" Value="true" />
+                                <Condition Binding="{Binding IsMouseOver, ElementName=DocumentCloseButton}" Value="True" />
+                            </MultiDataTrigger.Conditions>
+                            <Setter TargetName="DocumentCloseButton" Property="Background" Value="{DynamicResource AvalonDockThemeVs2013DocumentWellTabButtonSelectedInactiveHoveredBackground}" />
+                            <Setter TargetName="DocumentCloseButton" Property="BorderBrush" Value="{DynamicResource AvalonDockThemeVs2013DocumentWellTabButtonSelectedInactiveHoveredBorder}" />
+                            <Setter TargetName="PART_ImgPinClose" Property="Fill" Value="{DynamicResource AvalonDockThemeVs2013DocumentWellTabButtonSelectedInactiveHoveredGlyph}" />
+                        </MultiDataTrigger>
+
+                        <!-- Document Well : Tab : Button / Selected, inactive, pressed -->
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding IsLastFocusedDocument}" Value="true" />
+                                <Condition Binding="{Binding IsMouseCaptured, ElementName=DocumentCloseButton}" Value="True" />
+                            </MultiDataTrigger.Conditions>
+                            <Setter TargetName="DocumentCloseButton" Property="Background" Value="{DynamicResource AvalonDockThemeVs2013DocumentWellTabButtonSelectedInactivePressedBackground}" />
+                            <Setter TargetName="DocumentCloseButton" Property="BorderBrush" Value="{DynamicResource AvalonDockThemeVs2013DocumentWellTabButtonSelectedInactivePressedBorder}" />
+                            <Setter TargetName="PART_ImgPinClose" Property="Fill" Value="{DynamicResource AvalonDockThemeVs2013DocumentWellTabButtonSelectedInactivePressedGlyph}" />
+                        </MultiDataTrigger>
+
+                        <!-- Document Well : Tab : Button / Selected, active -->
+                        <DataTrigger Binding="{Binding IsActive}" Value="true">
+                            <Setter TargetName="PART_ImgPinClose" Property="Fill" Value="{DynamicResource AvalonDockThemeVs2013DocumentWellTabButtonSelectedActiveGlyph}" />
+                        </DataTrigger>
+
+                        <!-- Document Well : Tab : Button / Selected, active, hovered -->
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding IsActive}" Value="true" />
+                                <Condition Binding="{Binding IsMouseOver, ElementName=DocumentCloseButton}" Value="True" />
+                            </MultiDataTrigger.Conditions>
+                            <Setter TargetName="DocumentCloseButton" Property="Background" Value="{DynamicResource AvalonDockThemeVs2013DocumentWellTabButtonSelectedActiveHoveredBackground}" />
+                            <Setter TargetName="DocumentCloseButton" Property="BorderBrush" Value="{DynamicResource AvalonDockThemeVs2013DocumentWellTabButtonSelectedActiveHoveredBorder}" />
+                            <Setter TargetName="PART_ImgPinClose" Property="Fill" Value="{DynamicResource AvalonDockThemeVs2013DocumentWellTabButtonSelectedActiveHoveredGlyph}" />
+                        </MultiDataTrigger>
+
+                        <!-- Document Well : Tab : Button / Selected, active, pressed -->
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding IsActive}" Value="true" />
+                                <Condition Binding="{Binding IsMouseCaptured, ElementName=DocumentCloseButton}" Value="True" />
+                            </MultiDataTrigger.Conditions>
+                            <Setter TargetName="DocumentCloseButton" Property="Background" Value="{DynamicResource AvalonDockThemeVs2013DocumentWellTabButtonSelectedActivePressedBackground}" />
+                            <Setter TargetName="DocumentCloseButton" Property="BorderBrush" Value="{DynamicResource AvalonDockThemeVs2013DocumentWellTabButtonSelectedActivePressedBorder}" />
+                            <Setter TargetName="PART_ImgPinClose" Property="Fill" Value="{DynamicResource AvalonDockThemeVs2013DocumentWellTabButtonSelectedActivePressedGlyph}" />
+                        </MultiDataTrigger>
+
+                        <!-- Document Well : Tab : Button / Unselected, tab hovered -->
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding IsActive}" Value="False" />
+                                <Condition Binding="{Binding IsLastFocusedDocument}" Value="False" />
+                                <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource TemplatedParent}}" Value="True" />
+                            </MultiDataTrigger.Conditions>
+                            <Setter TargetName="PART_ImgPinClose" Property="Fill" Value="{DynamicResource AvalonDockThemeVs2013DocumentWellTabButtonUnselectedTabHoveredGlyph}" />
+                        </MultiDataTrigger>
+
+                        <!-- Document Well : Tab : Button / Unselected, tab hovered, button hovered -->
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding IsActive}" Value="False" />
+                                <Condition Binding="{Binding IsLastFocusedDocument}" Value="False" />
+                                <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource TemplatedParent}}" Value="True" />
+                                <Condition Binding="{Binding IsMouseOver, ElementName=DocumentCloseButton}" Value="True" />
+                            </MultiDataTrigger.Conditions>
+                            <Setter TargetName="DocumentCloseButton" Property="Background" Value="{DynamicResource AvalonDockThemeVs2013DocumentWellTabButtonUnselectedTabHoveredButtonHoveredBackground}" />
+                            <Setter TargetName="DocumentCloseButton" Property="BorderBrush" Value="{DynamicResource AvalonDockThemeVs2013DocumentWellTabButtonUnselectedTabHoveredButtonHoveredBorder}" />
+                            <Setter TargetName="PART_ImgPinClose" Property="Fill" Value="{DynamicResource AvalonDockThemeVs2013DocumentWellTabButtonUnselectedTabHoveredButtonHoveredGlyph}" />
+                        </MultiDataTrigger>
+
+                        <!-- Document Well : Tab : Button / Unselected, tab hovered, button pressed -->
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding IsActive}" Value="False" />
+                                <Condition Binding="{Binding IsLastFocusedDocument}" Value="False" />
+                                <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource TemplatedParent}}" Value="True" />
+                                <Condition Binding="{Binding IsMouseCaptured, ElementName=DocumentCloseButton}" Value="True" />
+                            </MultiDataTrigger.Conditions>
+                            <Setter TargetName="DocumentCloseButton" Property="Background" Value="{DynamicResource AvalonDockThemeVs2013DocumentWellTabButtonUnselectedTabHoveredButtonPressedBackground}" />
+                            <Setter TargetName="DocumentCloseButton" Property="BorderBrush" Value="{DynamicResource AvalonDockThemeVs2013DocumentWellTabButtonUnselectedTabHoveredButtonPressedBorder}" />
+                            <Setter TargetName="PART_ImgPinClose" Property="Fill" Value="{DynamicResource AvalonDockThemeVs2013DocumentWellTabButtonUnselectedTabHoveredButtonPressedGlyph}" />
+                        </MultiDataTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
