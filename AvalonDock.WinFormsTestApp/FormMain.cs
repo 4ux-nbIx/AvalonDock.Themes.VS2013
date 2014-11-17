@@ -99,13 +99,13 @@ namespace AvalonDock.WinFormsTestApp
 
         private void menuItemExpressionDark_Click( object sender, EventArgs e )
         {
-          _dockingManager.Theme = new Xceed.Wpf.AvalonDock.Themes.ExpressionDarkTheme();
+          //_dockingManager.Theme = new Xceed.Wpf.AvalonDock.Themes.ExpressionDarkTheme();
           this.SetChecked( menuItemExpressionDark );
         }
 
         private void menuItemExpressionLight_Click( object sender, EventArgs e )
         {
-          _dockingManager.Theme = new Xceed.Wpf.AvalonDock.Themes.ExpressionLightTheme();
+          //_dockingManager.Theme = new Xceed.Wpf.AvalonDock.Themes.ExpressionLightTheme();
           this.SetChecked( menuItemExpressionLight );
         }
 
