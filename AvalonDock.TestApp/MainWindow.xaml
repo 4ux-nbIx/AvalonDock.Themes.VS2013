@@ -61,7 +61,7 @@
 
         <avalonDock:DockingManager Grid.Row="1" x:Name="dockManager" AllowMixedOrientation="True" DocumentClosing="dockManager_DocumentClosing">
             <avalonDock:DockingManager.Theme>
-                <avalonDock:Vs2013DarkTheme/>
+                <avalonDock:Vs2013BlueTheme/>
             </avalonDock:DockingManager.Theme>
             <avalonDock:DockingManager.DocumentHeaderTemplate>
                 <DataTemplate>
