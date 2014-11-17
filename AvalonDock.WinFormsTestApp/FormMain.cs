@@ -42,7 +42,7 @@ namespace AvalonDock.WinFormsTestApp
         DockingManager _dockingManager = new DockingManager();
         protected override void OnLoad(EventArgs e)
         {
-            _dockingManager.Theme = new Vs2013Theme();
+            _dockingManager.Theme = new Vs2013LightTheme();
             XmlLayoutSerializer serializer = new XmlLayoutSerializer(_dockingManager);
 
             serializer.LayoutSerializationCallback += (s, args) =>
@@ -111,7 +111,7 @@ namespace AvalonDock.WinFormsTestApp
 
         private void vS2013ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            _dockingManager.Theme = new Xceed.Wpf.AvalonDock.Themes.Vs2013Theme();
+            _dockingManager.Theme = new Xceed.Wpf.AvalonDock.Themes.Vs2013LightTheme();
             this.SetChecked(menuItemVs2013);
         }
 
