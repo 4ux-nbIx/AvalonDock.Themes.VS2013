@@ -114,4 +114,8 @@
     <SolidColorBrush x:Key="AvalonDockThemeVs2013ToolWindowTabUnselectedText" Color="#444444" />
     <SolidColorBrush x:Key="AvalonDockThemeVs2013ToolWindowTabUnselectedHoveredBackground" Color="#C9DEF5" />
     <SolidColorBrush x:Key="AvalonDockThemeVs2013ToolWindowTabUnselectedHoveredText" Color="#1E1E1E" />
+    
+    <!-- Floating Document Window -->
+    <SolidColorBrush x:Key="AvalonDockThemeVs2013FloatingDocumentWindowBackground" Color="#EEEEF2" />
+    <SolidColorBrush x:Key="AvalonDockThemeVs2013FloatingDocumentWindowBorder" Color="#9B9FB9" />
 </ResourceDictionary>
