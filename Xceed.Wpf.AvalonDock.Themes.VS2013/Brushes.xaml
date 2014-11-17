@@ -117,4 +117,6 @@
     
     <!-- Navigator Window -->
     <SolidColorBrush x:Key="AvalonDockThemeVs2013NavigatorWindowBackground" Color="#EEEEEE" />
+    <SolidColorBrush x:Key="AvalonDockThemeVs2013NavigatorWindowSelectedBackground" Color="#007ACC" />
+    <SolidColorBrush x:Key="AvalonDockThemeVs2013NavigatorWindowSelectedText" Color="#FFFFFF" />
 </ResourceDictionary>

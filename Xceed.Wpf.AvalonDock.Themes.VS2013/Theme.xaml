@@ -486,7 +486,7 @@
                                                   Viewport="0,0,4,5"
                                                   ViewportUnits="Absolute">
                                         <DrawingBrush.Drawing>
-                                            <GeometryDrawing Brush="{Binding Fill, ElementName=DragHandleGeometryPlaceholder, Mode=OneWay}">
+                                            <GeometryDrawing Brush="{Binding Fill, ElementName=DragHandleGeometryPlaceholder, Mode=OneWay, Converter={StaticResource NullToDoNothingConverter}}">
                                                 <GeometryDrawing.Geometry>
                                                     <GeometryGroup>
                                                         <GeometryGroup.Children>
@@ -2058,28 +2058,12 @@
                 <ControlTemplate>
                     <Rectangle RadiusX="2"
                                RadiusY="2"
-                               Stroke="#8E6EA6F5"
+                               Stroke="{DynamicResource AvalonDockThemeVs2013PanelBorderBrush}"
                                StrokeThickness="1" />
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
-    <LinearGradientBrush x:Key="AvalonDockThemeVs2013NavigatorWindowListBoxItemHoverFill" StartPoint="0,0" EndPoint="0,1">
-        <GradientStop Offset="0" Color="#FFF1FBFF" />
-        <GradientStop Offset="1" Color="#FFD5F1FE" />
-    </LinearGradientBrush>
-    <LinearGradientBrush x:Key="AvalonDockThemeVs2013NavigatorWindowListBoxItemSelectedFill" StartPoint="0,0" EndPoint="0,1">
-        <GradientStop Offset="0" Color="#FFD9F4FF" />
-        <GradientStop Offset="1" Color="#FF9BDDFB" />
-    </LinearGradientBrush>
-    <LinearGradientBrush x:Key="AvalonDockThemeVs2013NavigatorWindowListBoxItemSelectedInactiveFill" StartPoint="0,0" EndPoint="0,1">
-        <GradientStop Offset="0" Color="#FFEEEDED" />
-        <GradientStop Offset="1" Color="#FFDDDDDD" />
-    </LinearGradientBrush>
-    <LinearGradientBrush x:Key="AvalonDockThemeVs2013NavigatorWindowListBoxItemSelectedHoverFill" StartPoint="0,0" EndPoint="0,1">
-        <GradientStop Offset="0" Color="#FFEAF9FF" />
-        <GradientStop Offset="1" Color="#FFC9EDFD" />
-    </LinearGradientBrush>
 
     <Style x:Key="AvalonDockThemeVs2013NavigatorWindowListBoxItemStyle" TargetType="ListBoxItem">
         <Setter Property="FocusVisualStyle" Value="{StaticResource AvalonDockThemeVs2013NavigatorWindowListBoxItemFocusVisual}" />
@@ -2112,19 +2096,20 @@
                         </Border>
                     </Border>
                     <ControlTemplate.Triggers>
-                        <Trigger Property="IsMouseOver" Value="true">
+                        <!--<Trigger Property="IsMouseOver" Value="true">
                             <Setter Property="Background" Value="{StaticResource AvalonDockThemeVs2013NavigatorWindowListBoxItemSelectedFill}" />
                             <Setter Property="BorderBrush" Value="#FF98DDFB" />
                             <Setter TargetName="InnerBorder" Property="BorderBrush" Value="#80FFFFFF" />
                             <Setter TargetName="UpperHighlight" Property="Visibility" Value="Visible" />
                             <Setter TargetName="UpperHighlight" Property="Fill" Value="#40FFFFFF" />
-                        </Trigger>
+                        </Trigger>-->
                         <Trigger Property="IsSelected" Value="true">
-                            <Setter Property="Background" Value="{StaticResource AvalonDockThemeVs2013NavigatorWindowListBoxItemSelectedFill}" />
-                            <Setter Property="BorderBrush" Value="#FF98DDFB" />
-                            <Setter TargetName="InnerBorder" Property="BorderBrush" Value="#80FFFFFF" />
-                            <Setter TargetName="UpperHighlight" Property="Visibility" Value="Visible" />
-                            <Setter TargetName="UpperHighlight" Property="Fill" Value="#40FFFFFF" />
+                            <Setter Property="Background" Value="{DynamicResource AvalonDockThemeVs2013NavigatorWindowSelectedBackground}" />
+                            <Setter Property="TextElement.Foreground" Value="{DynamicResource AvalonDockThemeVs2013NavigatorWindowSelectedText}" />
+                            <!--<Setter Property="BorderBrush" Value="#FF98DDFB" />-->
+                            <!--<Setter TargetName="InnerBorder" Property="BorderBrush" Value="#80FFFFFF" />-->
+                            <!--<Setter TargetName="UpperHighlight" Property="Visibility" Value="Visible" />
+                            <Setter TargetName="UpperHighlight" Property="Fill" Value="#40FFFFFF" />-->
                         </Trigger>
                         <!--
                             <MultiTrigger>
@@ -2195,9 +2180,9 @@
                                                    Text="{Binding SelectedDocument.LayoutElement.Title, RelativeSource={RelativeSource TemplatedParent}}"
                                                    TextTrimming="CharacterEllipsis" />
                                     </Grid>
-                                    <TextBlock VerticalAlignment="Center"
+                                    <!--<TextBlock VerticalAlignment="Center"
                                                Text="{Binding SelectedDocument.LayoutElement.Description, RelativeSource={RelativeSource TemplatedParent}}"
-                                               TextTrimming="CharacterEllipsis" />
+                                               TextTrimming="CharacterEllipsis" />-->
                                 </Grid>
 
                                 <Border Grid.Row="1"
