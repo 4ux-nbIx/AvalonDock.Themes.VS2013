@@ -1055,7 +1055,7 @@
 
     <!--  DockingManager  -->
     <Style x:Key="{x:Type avalonDock:DockingManager}" TargetType="{x:Type avalonDock:DockingManager}">
-        <Setter Property="Background" Value="{DynamicResource AvalonDockThemeVs2013BaseColor1}" />
+        <Setter Property="Background" Value="{DynamicResource AvalonDockThemeVs2013Background}" />
         <Setter Property="DocumentPaneControlStyle" Value="{StaticResource AvalonDockThemeVs2013DocumentPaneControlStyle}" />
         <Setter Property="AnchorablePaneControlStyle" Value="{StaticResource AvalonDockThemeVs2013AnchorablePaneControlStyle}" />
         <Setter Property="AnchorSideTemplate" Value="{StaticResource AvalonDockThemeVs2013AnchorSideTemplate}" />
@@ -1726,7 +1726,7 @@
                     <Grid>
                         <Border x:Name="WindowBorder"
                                 Background="{TemplateBinding Background}"
-                                BorderBrush="{DynamicResource AvalonDockThemeVs2013BaseColor6}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="1">
                             <Grid>
                                 <Grid.RowDefinitions>
@@ -2161,7 +2161,7 @@
                 <ControlTemplate TargetType="{x:Type avalonDockControls:NavigatorWindow}">
                     <Grid>
                         <Border x:Name="WindowBorder"
-                                Background="{DynamicResource AvalonDockThemeVs2013BaseColor1}"
+                                Background="{DynamicResource AvalonDockThemeVs2013NavigatorWindowBackground}"
                                 BorderBrush="{DynamicResource AvalonDockThemeVs2013PanelBorderBrush}"
                                 BorderThickness="1">
                             <Grid>
@@ -2202,7 +2202,7 @@
 
                                 <Border Grid.Row="1"
                                         MinHeight="200"
-                                        Background="{DynamicResource AvalonDockThemeVs2013BaseColor7}"
+                                        Background="{DynamicResource AvalonDockThemeVs2013NavigatorWindowBackground}"
                                         BorderBrush="Transparent"
                                         BorderThickness="0,1,0,0">
                                     <Grid Margin="5">
