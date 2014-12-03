@@ -24,7 +24,7 @@
     
     <!-- General -->
     <SolidColorBrush x:Key="AvalonDockThemeVs2013Background" Color="#293955" />
-    <SolidColorBrush x:Key="AvalonDockThemeVs2013PanelBorderBrush" Color="#465A7D" />
+    <SolidColorBrush x:Key="AvalonDockThemeVs2013PanelBorderBrush" Color="#8E9BBC" />
     <SolidColorBrush x:Key="AvalonDockThemeVs2013TabBackground" Color="#FFFFFF" />
     
     <!-- Auto Hide : Tab -->
@@ -76,7 +76,7 @@
     <SolidColorBrush x:Key="AvalonDockThemeVs2013DocumentWellTabButtonUnselectedTabHoveredButtonPressedBackground" Color="#FDF4BF" />
     <SolidColorBrush x:Key="AvalonDockThemeVs2013DocumentWellTabButtonUnselectedTabHoveredButtonPressedBorder" Color="#E5C365" />
     <SolidColorBrush x:Key="AvalonDockThemeVs2013DocumentWellTabButtonUnselectedTabHoveredButtonPressedGlyph" Color="#000000" />
-    
+
     <!-- Tool Window : Caption -->
     <SolidColorBrush x:Key="AvalonDockThemeVs2013ToolWindowCaptionActiveBackground" Color="#FFF29D" />
     <SolidColorBrush x:Key="AvalonDockThemeVs2013ToolWindowCaptionActiveGrip" Color="#FFF29D" />
