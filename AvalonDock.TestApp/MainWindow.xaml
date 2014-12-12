@@ -20,7 +20,8 @@
         xmlns:avalonDock="http://schemas.xceed.com/wpf/xaml/avalondock"
         xmlns:local="clr-namespace:AvalonDock.TestApp"
         xmlns:winformsIntegration="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="350" Width="525"
+        UseLayoutRounding="True">
     <Grid x:Name="layoutRoot">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -60,7 +61,7 @@
 
         <avalonDock:DockingManager Grid.Row="1" x:Name="dockManager" AllowMixedOrientation="True" DocumentClosing="dockManager_DocumentClosing">
             <avalonDock:DockingManager.Theme>
-                <avalonDock:Vs2013Theme/>
+                <avalonDock:Vs2013BlueTheme/>
             </avalonDock:DockingManager.Theme>
             <avalonDock:DockingManager.DocumentHeaderTemplate>
                 <DataTemplate>
