@@ -80,7 +80,7 @@
                     </avalonDock:LayoutAnchorablePane>
                     <avalonDock:LayoutDocumentPaneGroup>
                         <avalonDock:LayoutDocumentPane>
-                            <avalonDock:LayoutDocument ContentId="document1" Title="Document 1" IconSource="/AvalonDock.TestApp;component/Images/alarm-clock-blue.png" >
+                            <avalonDock:LayoutDocument CanClose="False" ContentId="document1" Title="Document 1" IconSource="/AvalonDock.TestApp;component/Images/alarm-clock-blue.png" >
                                 <StackPanel>
                                     <TextBox Text="Document 1 Content"/>
                                     <Button Content="Click to add 2 documents" Click="AddTwoDocuments_click"/>
