@@ -81,6 +81,7 @@
     <!--  DocumentPaneControlStyle  -->
     <Style x:Key="AvalonDockThemeVs2013DocumentPaneControlStyle" TargetType="{x:Type avalonDockControls:LayoutDocumentPaneControl}">
         <Setter Property="BorderBrush" Value="{x:Null}" />
+        <Setter Property="Background" Value="{DynamicResource AvalonDockThemeVs2013TabBackground}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type avalonDockControls:LayoutDocumentPaneControl}">
