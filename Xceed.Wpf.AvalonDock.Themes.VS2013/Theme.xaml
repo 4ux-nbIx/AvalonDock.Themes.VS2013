@@ -1,4 +1,5 @@
-﻿<!--
+﻿
+<!--
     ***********************************************************************************
     
     AvalonDock
@@ -372,7 +373,7 @@
                                         <Setter TargetName="Bd" Property="BorderThickness" Value="1,0,1,1" />
                                         <Setter Property="Panel.ZIndex" Value="1" />
                                     </Trigger>
-
+                                    
                                     <!-- Tool Window : Tab / Selected, active -->
                                     <MultiDataTrigger>
                                         <MultiDataTrigger.Conditions>
@@ -577,7 +578,7 @@
                             <Setter Property="Foreground" Value="{DynamicResource AvalonDockThemeVs2013ToolWindowCaptionActiveText}" />
                             <Setter TargetName="DragHandleGeometryPlaceholder" Property="Fill" Value="{DynamicResource AvalonDockThemeVs2013ToolWindowCaptionActiveGrip}" />
                         </DataTrigger>
-
+                        
                         <!-- Tool Window : Caption : Button / Active -->
                         <DataTrigger Binding="{Binding Model.IsActive, RelativeSource={RelativeSource Mode=Self}}" Value="True">
                             <Setter TargetName="PART_ImgMenuPin" Property="Fill" Value="{DynamicResource AvalonDockThemeVs2013ToolWindowCaptionButtonActiveGlyph}" />
@@ -717,18 +718,18 @@
                 <Setter TargetName="Bd" Property="BorderThickness" Value="0,6,0,0" />
                 <Setter TargetName="Bd" Property="Padding" Value="0,3,0,3" />
             </Trigger>
-
+            
             <Trigger Property="Side" Value="Top">
                 <Setter TargetName="Bd" Property="BorderThickness" Value="0,6,0,0" />
                 <Setter TargetName="Bd" Property="Padding" Value="0,3,0,3" />
             </Trigger>
-
+            
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter TargetName="Bd" Property="Background" Value="{DynamicResource AvalonDockThemeVs2013AutoHideTabHoveredBackground}" />
                 <Setter TargetName="Bd" Property="BorderBrush" Value="{DynamicResource AvalonDockThemeVs2013AutoHideTabHoveredBorder}" />
                 <Setter TargetName="Bd" Property="TextElement.Foreground" Value="{DynamicResource AvalonDockThemeVs2013AutoHideTabHoveredText}" />
             </Trigger>
-
+            
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
@@ -1198,7 +1199,7 @@
                             <Setter TargetName="DocumentCloseButton" Property="Visibility" Value="Visible" />
                         </DataTrigger>
                         <DataTrigger Binding="{Binding Path=IsActive}" Value="true">
-                            <Setter TargetName="DocumentCloseButton" Property="Visibility" Value="Hidden" />
+                            <Setter TargetName="DocumentCloseButton" Property="Visibility" Value="Visible" />
                         </DataTrigger>
                         <DataTrigger Binding="{Binding Path=CanClose}" Value="false">
                             <Setter TargetName="DocumentCloseButton" Property="Visibility" Value="Collapsed" />
