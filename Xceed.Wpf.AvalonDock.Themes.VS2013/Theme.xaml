@@ -1195,14 +1195,14 @@
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter TargetName="DocumentCloseButton" Property="Visibility" Value="Visible" />
                         </Trigger>
-                        <DataTrigger Binding="{Binding Path=CanClose}" Value="false">
-                            <Setter TargetName="DocumentCloseButton" Property="Visibility" Value="Collapsed" />
-                        </DataTrigger>
                         <DataTrigger Binding="{Binding Path=IsLastFocusedDocument}" Value="true">
                             <Setter TargetName="DocumentCloseButton" Property="Visibility" Value="Visible" />
                         </DataTrigger>
                         <DataTrigger Binding="{Binding Path=IsActive}" Value="true">
                             <Setter TargetName="DocumentCloseButton" Property="Visibility" Value="Visible" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Path=CanClose}" Value="false">
+                            <Setter TargetName="DocumentCloseButton" Property="Visibility" Value="Collapsed" />
                         </DataTrigger>
 
                         <!-- Document Well : Tab : Button / Selected, inactive -->
