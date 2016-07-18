@@ -250,7 +250,10 @@ namespace AvalonDock.TestApp
             if (MessageBox.Show("Are you sure you want to hide this tool?", "AvalonDock", MessageBoxButton.YesNo)== MessageBoxResult.No)
                 e.Cancel = true;
         }
-
-
+        
+        private void OnShowHeader(object sender, RoutedEventArgs e)
+        {
+            LayoutDocumentPane.ShowHeader = !LayoutDocumentPane.ShowHeader;
+        }
     }
 }

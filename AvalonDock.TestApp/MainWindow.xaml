@@ -52,6 +52,7 @@
                 <MenuItem Header="Dump To Console" Click="OnDumpToConsole"/>
                 <MenuItem Header="Unload Manager" Click="OnUnloadManager"/>
                 <MenuItem Header="Load Manager" Click="OnLoadManager"/>
+                <MenuItem Header="Show header" Click="OnShowHeader"></MenuItem>
             </MenuItem>
             <MenuItem Header="Tools">
                 <MenuItem Header="WinForms Window" Click="OnShowWinformsWindow"/>
@@ -61,7 +62,7 @@
 
         <avalonDock:DockingManager Grid.Row="1" x:Name="dockManager" AllowMixedOrientation="True" DocumentClosing="dockManager_DocumentClosing">
             <avalonDock:DockingManager.Theme>
-                <avalonDock:Vs2013BlueTheme/>
+                <avalonDock:Vs2013DarkTheme/>
             </avalonDock:DockingManager.Theme>
             <avalonDock:DockingManager.DocumentHeaderTemplate>
                 <DataTemplate>
@@ -79,7 +80,7 @@
                         </avalonDock:LayoutAnchorable>
                     </avalonDock:LayoutAnchorablePane>
                     <avalonDock:LayoutDocumentPaneGroup>
-                        <avalonDock:LayoutDocumentPane>
+                        <avalonDock:LayoutDocumentPane x:Name="LayoutDocumentPane">
                             <avalonDock:LayoutDocument ContentId="document1" Title="Document 1" IconSource="/AvalonDock.TestApp;component/Images/alarm-clock-blue.png" >
                                 <StackPanel>
                                     <TextBox Text="Document 1 Content"/>
