@@ -1069,49 +1069,6 @@
         <Setter Property="IconContentTemplate" Value="{StaticResource AvalonDockThemeVs2013IconContentTemplate}" />
         <Setter Property="GridSplitterWidth" Value="6" />
         <Setter Property="GridSplitterHeight" Value="6" />
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type avalonDock:DockingManager}">
-                    <Border Background="{TemplateBinding Background}"
-                            BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="*" />
-                                <RowDefinition Height="Auto" />
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="Auto" />
-                            </Grid.ColumnDefinitions>
-                            <ContentPresenter Grid.Row="1"
-                                              Grid.Column="1"
-                                              Content="{TemplateBinding LayoutRootPanel}" />
-                            <ContentPresenter Grid.Row="1"
-                                              Grid.Column="2"
-                                              Content="{TemplateBinding RightSidePanel}" />
-                            <ContentPresenter Grid.Row="1"
-                                              Grid.Column="0"
-                                              Content="{TemplateBinding LeftSidePanel}" />
-                            <ContentPresenter Grid.Row="0"
-                                              Grid.Column="1"
-                                              Content="{TemplateBinding TopSidePanel}" />
-                            <ContentPresenter Grid.Row="2"
-                                              Grid.Column="1"
-                                              Content="{TemplateBinding BottomSidePanel}" />
-                            <ContentPresenter x:Name="PART_AutoHideArea"
-                                              Grid.Row="1"
-                                              Grid.Column="1"
-                                              HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
-                                              VerticalAlignment="{TemplateBinding VerticalAlignment}"
-                                              Content="{TemplateBinding AutoHideWindow}" />
-                        </Grid>
-                    </Border>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
     </Style>
 
     <!--  LayoutGridResizerControl  -->
