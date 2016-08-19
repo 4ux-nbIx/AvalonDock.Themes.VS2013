@@ -1069,7 +1069,7 @@
         <Setter Property="IconContentTemplate" Value="{StaticResource AvalonDockThemeVs2013IconContentTemplate}" />
         <Setter Property="GridSplitterWidth" Value="6" />
         <Setter Property="GridSplitterHeight" Value="6" />
-        <Setter Property="Template">
+        <!--<Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type avalonDock:DockingManager}">
                     <Border Background="{TemplateBinding Background}"
@@ -1111,7 +1111,7 @@
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
-        </Setter>
+        </Setter>-->
     </Style>
 
     <!--  LayoutGridResizerControl  -->
