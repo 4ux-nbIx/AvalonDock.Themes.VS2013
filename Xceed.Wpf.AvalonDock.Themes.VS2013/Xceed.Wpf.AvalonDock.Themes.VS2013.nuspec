@@ -10,7 +10,7 @@
     <projectUrl>https://github.com/4ux-nbIx/AvalonDock.Themes.VS2013</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes>Initial release.</releaseNotes>
+    <releaseNotes>Kibnet@GitHub: Fixed crash in Gemini caused by redundand template.</releaseNotes>
     <tags>WPF AvalonDock theme</tags>
   </metadata>
 </package>
